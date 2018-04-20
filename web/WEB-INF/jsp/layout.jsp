@@ -1,0 +1,140 @@
+<%-- 
+    Document   : layout
+    Created on : 20.04.2018, 20:04:37
+    Author     : ?????????
+--%>
+
+<style> 
+body {
+    background: url(1.jpg) repeat;
+}
+
+
+#wrap {
+    min-height: 85vh;
+    margin-top: 20px;
+    background-color: #F5FFFA;
+    border-radius: 5px;
+}
+#loginForm{
+margin: auto;
+margin-top: 15%;
+    width: 700px;
+    height:300px;
+    background-color: #F5FFFA;
+}
+
+#footer {
+    background-color: #F5FFFA;
+    height: 11vh;
+    text-align: center;
+   
+    border-radius: 5px;
+   
+}
+
+#footerImage{
+  background: url(footer2.png) repeat-x;
+  height: 20px
+  
+}
+#footerText{
+  padding-top:12px;
+}
+#inline {
+    float: left;
+}
+
+#accountData {
+    margin-top: 20px;
+
+    text-align: right;
+}
+
+.navbar {
+
+    margin-top: 20px;
+}
+
+.nav {
+    text-align: center;
+}
+#logo{
+  margin-top:5px;
+   margin-left:5px;
+}
+#logoBig{
+  margin-left:30px;
+}
+#mainmenu {
+position: relative;
+overflow:hidden;
+height:30px;
+margin:10px 0
+}
+#mainmenu ul {
+list-style:none;
+margin:0;
+padding:0;
+position: relative;
+left:50%;
+float:left;
+height:30px
+}
+#mainmenu ul li {
+position:relative;
+left:-50%;
+float:left;
+margin:0 10px;
+height:30px
+}
+#mainmenu ul li a {
+display:block;
+text-decoration:none;
+padding:0 15px;
+line-height: 30px;
+}
+#mainmenu ul li a:hover {
+background-color:#d3faa7; 
+}
+
+#loginTitle{
+  font-size: 24px;
+  text-align: center;
+}
+
+
+.bigButton {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  width: 120px;
+  height: 35px;
+  border-radius: 40px;
+  margin-top: 20px;
+ 
+  padding:5px;
+  text-align: center;
+  color: #000000;
+  background: #9fdd7a;
+ 
+  transition: .3s;
+}
+.bigButton:hover {
+  text-decoration: none;
+  box-shadow:  #d3faa7;
+  color: white;
+  transform: translateY(-7px);
+}
+#loginFields{
+  margin-top:20px;
+ text-align: center;
+}
+#loginField{
+  margin:5px;
+}
+#passwordField{
+  margin:5px;
+}
+
+</style>
