@@ -35,6 +35,7 @@ public class AuthController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showUserForm(ModelMap model) {
+        System.out.println("0");
         User user = new User();
         model.addAttribute(user);
         return "loginPage";
@@ -42,9 +43,12 @@ public class AuthController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String onSubmit(@ModelAttribute("user") User user) {
+        System.out.println("1");
         if (authService.check(user) == 1){
-            return "redirect:userSuccess.htm";
+            System.out.println("3");
+            return "redirect:index.htm";
         }
+        
         return "loginPage";
     }
 }

@@ -15,7 +15,7 @@ public class AuthService {
         return "Hello " + name + "!";
     }
     public int check(User user){
-        
+        System.out.println("2");
         return 1;
     }
 }
