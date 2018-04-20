@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package model.dao;
 
 import java.util.List;
 import org.hibernate.Query;
@@ -14,7 +14,7 @@ import model.util.*;
  *
  * @author 7853j
  */
-public class AbstractController {
+public class AbstractDAO {
     
     List<Object> list;
     
