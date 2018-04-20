@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19.04.2018 15:05:13 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping auto-import="true">
+    <class name="model.pojo.RequestTree" table="request_tree" catalog="botanicdb" optimistic-lock="version">
+        <id name="idRequestTree" type="java.lang.Integer">
+            <column name="id_request_tree" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tree" class="model.pojo.Tree" fetch="select">
+            <column name="id_tree" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="model.pojo.User" fetch="select">
+            <column name="id_user" not-null="true" />
+        </many-to-one>
+        <property name="quantity" type="int">
+            <column name="quantity" not-null="true" />
+        </property>
+        <property name="body" type="string">
+            <column name="body" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19.04.2018 15:05:13 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping auto-import="true">
+    <class name="model.pojo.User" table="user" catalog="botanicdb" optimistic-lock="version">
+        <id name="idUser" type="java.lang.Integer">
+            <column name="id_user" />
+            <generator class="identity" />
+        </id>
+        <property name="role" type="int">
+            <column name="role" not-null="true" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="45" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="EMail" type="string">
+            <column name="`e-mail`" length="45" not-null="true" />
+        </property>
+        <property name="regDate" type="timestamp">
+            <column name="reg_date" length="19" not-null="true" />
+        </property>
+        <set name="reports" table="report" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_user" />
+            </key>
+            <one-to-many class="model.pojo.Report" />
+        </set>
+        <set name="requestFerts" table="request_fert" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_user" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.RequestFert" />
+        </set>
+        <one-to-one name="profile" class="model.pojo.Profile"></one-to-one>
+        <set name="requestTrees" table="request_tree" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_user" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.RequestTree" />
+        </set>
+        <set name="jobs" table="job" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_user" />
+            </key>
+            <one-to-many class="model.pojo.Job" />
+        </set>
+    </class>
+</hibernate-mapping>

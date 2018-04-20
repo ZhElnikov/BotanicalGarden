@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/web/WEB-INF/jsp/index.jsp</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/web/WEB-INF/applicationContext.xml</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/RequestFertController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/ProfileController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/SectorController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/TourController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/InterfaceController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/web/WEB-INF/dispatcher-servlet.xml</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/web/redirect.jsp</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/UserController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/RequestTreeController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/AbstractController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/JopController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/SoilController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/TreeController.java</file>
+            <file>file:/C:/MySpace/BSUIR/3k/RIS/RIScourse/src/java/controllers/ReportController.java</file>
+        </group>
+    </open-files>
+</project-private>

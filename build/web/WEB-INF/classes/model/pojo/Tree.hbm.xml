@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19.04.2018 15:05:13 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping auto-import="true">
+    <class name="model.pojo.Tree" table="tree" catalog="botanicdb" optimistic-lock="version">
+        <id name="idTree" type="java.lang.Integer">
+            <column name="id_tree" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="body" type="string">
+            <column name="body" />
+        </property>
+        <property name="optHumus" type="int">
+            <column name="opt_humus" not-null="true" />
+        </property>
+        <property name="optAcidity" type="int">
+            <column name="opt_acidity" not-null="true" />
+        </property>
+        <property name="optNitrate" type="int">
+            <column name="opt_nitrate" not-null="true" />
+        </property>
+        <property name="optPhosphor" type="int">
+            <column name="opt_phosphor" not-null="true" />
+        </property>
+        <set name="sectors" table="sector" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tree" />
+            </key>
+            <one-to-many class="model.pojo.Sector" />
+        </set>
+        <set name="requestTrees" table="request_tree" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tree" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.RequestTree" />
+        </set>
+    </class>
+</hibernate-mapping>

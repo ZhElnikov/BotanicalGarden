@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19.04.2018 15:05:13 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping auto-import="true">
+    <class name="model.pojo.Sector" table="sector" catalog="botanicdb" optimistic-lock="version">
+        <id name="idSector" type="java.lang.Integer">
+            <column name="id_sector" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="soil" class="model.pojo.Soil" fetch="select">
+            <column name="id_soil" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tree" class="model.pojo.Tree" fetch="select">
+            <column name="id_tree" />
+        </many-to-one>
+        <property name="square" type="double">
+            <column name="square" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

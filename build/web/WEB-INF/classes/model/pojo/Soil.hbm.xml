@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19.04.2018 15:05:13 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping auto-import="true">
+    <class name="model.pojo.Soil" table="soil" catalog="botanicdb" optimistic-lock="version">
+        <id name="idSoil" type="java.lang.Integer">
+            <column name="id_soil" />
+            <generator class="identity" />
+        </id>
+        <property name="humus" type="int">
+            <column name="humus" not-null="true" />
+        </property>
+        <property name="acidity" type="int">
+            <column name="acidity" not-null="true" />
+        </property>
+        <property name="nitrate" type="int">
+            <column name="nitrate" not-null="true" />
+        </property>
+        <property name="phosphor" type="int">
+            <column name="phosphor" not-null="true" />
+        </property>
+        <set name="sectors" table="sector" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_soil" not-null="true" />
+            </key>
+            <one-to-many class="model.pojo.Sector" />
+        </set>
+    </class>
+</hibernate-mapping>
