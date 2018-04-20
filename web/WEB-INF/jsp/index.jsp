@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=windows-1251"
+    pageEncoding="windows-1251"%>
+
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
