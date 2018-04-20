@@ -23,18 +23,18 @@ import services.AuthService;
  * @author 7853j
  */
 @Controller
-@RequestMapping("/userRegistration.htm")
+@RequestMapping("/loginPage.htm")
 @SessionAttributes("user")
 public class AuthController {
     private AuthService authService;
 
     @Autowired
-    public void setUserService(AuthService authService) {
+    public void setAuthService(AuthService authService) {
         this.authService = authService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showUserForm(ModelMap model) {
+    public String showAuthForm(ModelMap model) {
         System.out.println("0");
         User user = new User();
         model.addAttribute(user);
@@ -44,11 +44,14 @@ public class AuthController {
     @RequestMapping(method = RequestMethod.POST)
     public String onSubmit(@ModelAttribute("user") User user) {
         System.out.println("1");
-        if (authService.check(user) == 1){
-            System.out.println("3");
+        System.out.println(user.toString());
+        System.out.println(user.getLogin()); 
+        System.out.println(user.getPassword());   
+        System.out.println(authService.toString()); 
+            System.out.println("3");  
             return "redirect:index.htm";
-        }
+        //} 
         
-        return "loginPage";
+       // return "loginPage";
     }
 }

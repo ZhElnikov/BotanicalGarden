@@ -1,3 +1,5 @@
+
+<html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
@@ -10,7 +12,7 @@
     <div class="container">
         <div class="panel panel-default" id="loginForm">
             <div class="panel-body">
-                 <form action="" method="post" commandName="user">
+                <form method="post" action="#" th:action="@{/loginPage}" th:object="${user}">
                 <div id="loginTitle">???????????</div>
                 <div class="row">
                     <div class="col-md-5 col-sm-1">
@@ -19,20 +21,22 @@
                     <div class="col-md-7" id="loginFields">
                         <div>
                         <div id="loginField">
-                            <i class="fa fa-user-circle" aria-hidden="true" path="login"></i>
+                            <i class="fa fa-user-circle" aria-hidden="true" ></i>
                             <span>?????</span>
                         </div>
-                        <input type="text" id="loginInp">
+                        <input type="text" th:value="${user.login}" id="login" name="login">
                         <div id="passwordField">
-                            <i class="fa fa-key" aria-hidden="true" path="password"></i>
+                            <i class="fa fa-key" aria-hidden="true"></i>
                             <span>??????</span>
                         </div>
-                        <input type="password" id="passwInp"></div>
-                       <a class="bigButton" href="onSubmit" id="loginBtn" action="onSubmit">?????</a>
+                        <input type="password" th:value="${user.password}" id="password" name="password"></div>
+                        </div>
+                        <input type="submit" value="?????"></div>
                     </div>
                 </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>
 </body>
+</html>

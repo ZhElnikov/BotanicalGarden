@@ -21,6 +21,7 @@
             <props>
                 <prop key="index.htm">indexController</prop>
                 <prop key="login.htm">authController</prop>
+                <prop key="submit.htm">authController</prop>
             </props>
         </property>
     </bean>
@@ -40,8 +41,10 @@
     <!--
     My code
     <context:component-scan base-package="controllers" />
+    <bean name = "/logPage.htm"	class = "controllers.AuthController" p:authService-ref = "authService" p:formView = "loginPage" p:successView = "index" />
+    <bean name="/userAuth.htm" class="controllers.AuthController" p:authService-ref="authService" p:formView="authForm" p:successView="userSuccess" />
     -->
-    
     <bean id="authService" class="services.AuthService" />
     <bean id="authController" class="controllers.AuthController" />
+    	
 </beans>
