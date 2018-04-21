@@ -5,6 +5,8 @@
  */
 package controllers;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import model.dao.UserDAO;
 import model.pojo.User;
+import org.springframework.web.bind.annotation.CookieValue;
 
 import services.AuthService;
 
@@ -41,11 +44,12 @@ public class AuthController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String onSubmit(@ModelAttribute("user") User user) {
+    public String onSubmit(@ModelAttribute("user") User user, HttpServletResponse response) {
         if (AuthService.checkAuth(user) == 1){
-            System.out.println("3");  
+            response.addCookie(new Cookie("user", user.getLogin()));
             return "redirect:index.htm";
         }
-        return "loginPage";  
+        response.addCookie(new Cookie("user", "none"));
+        return "loginPage";
     }
 }

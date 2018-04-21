@@ -19,7 +19,7 @@
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <prop key="index.htm">indexController</prop>
+                <prop key="index.htm">myIndexController</prop>
                 <prop key="login.htm">authController</prop>
             </props>
         </property>
@@ -47,6 +47,7 @@
     <bean name="authService" class="services.AuthService" />
     
     <bean id="authController" class="controllers.AuthController" />
+     <bean id="myIndexController" class="controllers.MyIndexController" />
     
     	
 </beans>
