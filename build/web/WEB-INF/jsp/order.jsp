@@ -72,7 +72,6 @@
                     </div>
                 </nav>
             </div>
-
             <%
                 if (role == "1") {
             %>   
@@ -95,8 +94,7 @@
             <%}
             if (role=="2") {
 for(int i=0;i<5;i++) {
-           %>
-       
+           %>       
                 <div class="col-md-4">            
 <div class="panel panel-default">
     <div class="panel-body">
@@ -108,13 +106,9 @@ for(int i=0;i<5;i++) {
         <input class="aproveBtn" id = "aproveBtn" type="submit" value="Подтвердить"> 
         <input class="declineBtn" id = "declineBtn" type="submit" value="Отказать">
       </div>
-</div>    
-        
-    
+</div>        
 </div>
- 
-            
-            
+
             <%}}%>
             </div>
         </div>

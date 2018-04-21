@@ -1,3 +1,4 @@
+<%@page import="org.springframework.ui.ModelMap"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -38,10 +39,14 @@
 
                             <ul class="nav navbar-nav">
                                 <%
-                                    int role = 0; //user // Role - userrole(String)
+                                    //ServletContext sc = this.getServletContext();
+                               
+                                    String role = "2"; 
+                                    //String role = request.getAttribute("userrole").toString();
+                                    System.out.println(role);
                                     ArrayList<String> pages = new ArrayList<String>();
                                     ArrayList<String> links = new ArrayList<String>();
-                                    if (role == 1) {
+                                    if (role.equals("1")) {
                                         pages.add("Профиль");
                                         links.add("index.htm");
                                         pages.add("График и план");
@@ -74,7 +79,7 @@
 
             <%
                 String src="";
-                if (role == 1) {
+                if (role.equals("1")) {
                     src = "user.png";
                 } else {
                     src = "manager.png";

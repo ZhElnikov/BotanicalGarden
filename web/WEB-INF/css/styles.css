@@ -199,9 +199,47 @@ margin-top:-5px;
   padding:5px;
   background: #ff8080;
 }
+.createBtn{
+   text-decoration: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 10px;
+ 
+  padding:5px;
+  background: #9fdd7a; 
+  left:auto;
+}
 
+.completeBtn{
+   text-decoration: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 10px;
+ 
+  padding:5px;
+  background: #9fdd7a; 
+  left:auto;
+    
+}
 #smallOrder{
     margin-top:15px;
     margin-bottom:-2px;
     width:314px;
+}
+#smallOrder2{
+    height:150px;
+    width:100%;
+}
+.planinput{
+    width:200px;
+}
+
+#description{
+     width:425px;
+     height:200px;
+}
+
+#choseWorker{
+    width:200px;
+    height:25px;
 }
