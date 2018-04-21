@@ -5,6 +5,9 @@
  */
 package controllers;
 
+import java.util.List;
+import model.pojo.RequestFert;
+import model.pojo.RequestTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
+import services.OrderService;
 /**
  *
  * @author 7853j
@@ -25,6 +28,10 @@ public class OrderController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String showOrder(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        List<RequestFert> fertList = OrderService.getFerts();
+        List<RequestTree> treeList = OrderService.getTrees();
+        model.addAttribute("treeList", treeList);
+        model.addAttribute("fertList", fertList);
         model.addAttribute("userlogin", userLogin);
         model.addAttribute("userrole", userRole);
         return "order";

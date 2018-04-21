@@ -5,10 +5,24 @@
  */
 package model.dao;
 
+import java.util.List;
+import model.pojo.RequestTree;
+
 /**
  *
  * @author 7853j
  */
-public class RequestTreeDAO {
+public class RequestTreeDAO extends AbstractDAO{
+    RequestTree rt;
     
+    public List<Object> getAllNotes(){
+        executeHQL("from RequestTree");
+        return list;
+    }
+    
+    
+    public int amount(){
+        getAllNotes();
+        return list.size();
+    }
 }

@@ -1,3 +1,4 @@
+<%@page import="org.springframework.web.servlet.DispatcherServlet"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -35,9 +36,20 @@
                             <a class="navbar-brand" href="index.htm">Личный кабинет</a>
                         </div>
                         <div id="mainmenu">
-
                             <ul class="nav navbar-nav">
+                                
                                 <%
+                                    //ServletContext context = config.getServletContext();
+                                    //WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
+                                   // String roletest = context.getAttribute("userrole").toString();
+                                    Cookie cookies[] = request.getCookies();
+                                    System.out.println(cookies.length);
+                                    for (int i = 0; i < cookies.length; i++){
+                                        if (cookies[i].getName().equals("role")) {
+                                            System.out.println("!!! " + i);
+                                        }
+                                    }
+                                    
                                     int role = 0; //user // Role - userrole(String)
                                     ArrayList<String> pages = new ArrayList<String>();
                                     ArrayList<String> links = new ArrayList<String>();
