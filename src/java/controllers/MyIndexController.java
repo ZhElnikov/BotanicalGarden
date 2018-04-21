@@ -5,6 +5,9 @@
  */
 package controllers;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.PageContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -22,13 +25,15 @@ import services.JobService;
 public class MyIndexController {
     
     @RequestMapping(method = RequestMethod.GET)
-    public String showIndex(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+    public String showIndex(HttpServletRequest request, ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
         Profile profile = ProfileService.getLoginProfile(userLogin);
         String jobs = JobService.getJobs(userLogin);
         model.addAttribute("jobs", jobs);
         model.addAttribute("profile", profile);
         model.addAttribute("userlogin", userLogin);
         model.addAttribute("userrole", userRole);
+        request.setAttribute("userrole", userRole);
+        //sc.setInitParameter("userrole", userRole);
         return "index";
         
     }
