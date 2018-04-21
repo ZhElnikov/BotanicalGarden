@@ -36,11 +36,7 @@
                             <span>??????</span>
                         </div>
                         <input type="password" th:value="${user.password}" id="password" name="password"></div>
-<<<<<<< HEAD
                         <input class="bigButton" type="submit" value="Войти"></div>
-=======
-                       <input class="bigButton" type="submit" value="Войти"></div>
->>>>>>> 47bd9dfa5cd3d10435d60aa533faa12bc75cc472
                     </div>
                 </div>
                 </form>

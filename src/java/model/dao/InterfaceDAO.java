@@ -11,8 +11,8 @@ import java.util.List;
  * @author 7853j
  */
 public interface InterfaceDAO {
-    List getAllNotes();
-    List getFilterNotes(String column, String filter);
+    void getAllNotes();
+    void getFilterNotes(String column, String filter);
     int findNote(String column, String filter);
     int saveOrUpdate(Object o);
     void delNote(int i);

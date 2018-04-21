@@ -36,20 +36,13 @@ public class AuthController {
  
     @RequestMapping(method = RequestMethod.GET)
     public String showAuthForm(ModelMap model) {
-        System.out.println("0");
         User user = new User();
         model.addAttribute(user);
-        AuthService.sayHello();
         return "loginPage";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String onSubmit(@ModelAttribute("user") User user) {
-        System.out.println("1");
-        System.out.println(user.toString());
-        System.out.println(user.getLogin()); 
-        System.out.println(user.getPassword());   
-        //System.out.println(authService.toString()); 
         if (AuthService.checkAuth(user) == 1){
             System.out.println("3");  
             return "redirect:index.htm";
