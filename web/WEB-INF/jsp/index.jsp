@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<%@page import="org.springframework.web.servlet.DispatcherServlet"%>
-=======
-<%@page import="org.springframework.ui.ModelMap"%>
->>>>>>> 4152336142286e463b15d632a6d18ae8e285c0c2
+
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
