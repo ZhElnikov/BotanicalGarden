@@ -12,18 +12,8 @@ import model.pojo.User;
  */
 public class AuthService {
     
-    public static String sayHello(String name) {
-        return "Hello " + name + "!";
-    }
-    
     public int check(User user){
         System.out.println("2");
-        return 1;
-    }
-     
-    public void add(User user) {
-	//Persist the user object here. 
-	System.out.println("User added successfully");
- 
+        return 1; 
     }
 }

@@ -32,7 +32,7 @@ public class AuthController {
     public void setAuthService(AuthService authService) {
         this.authService = authService;
     }
-
+ 
     @RequestMapping(method = RequestMethod.GET)
     public String showAuthForm(ModelMap model) {
         System.out.println("0");
@@ -47,11 +47,10 @@ public class AuthController {
         System.out.println(user.toString());
         System.out.println(user.getLogin()); 
         System.out.println(user.getPassword());   
-        System.out.println(authService.toString()); 
+        //System.out.println(authService.toString()); 
             System.out.println("3");  
             return "redirect:index.htm";
-        //} 
-        
-       // return "loginPage";
+        //}
+       // return "loginPage";  
     }
 }

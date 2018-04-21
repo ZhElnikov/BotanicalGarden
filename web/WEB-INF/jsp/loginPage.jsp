@@ -12,7 +12,7 @@
     <div class="container">
         <div class="panel panel-default" id="loginForm">
             <div class="panel-body">
-                <form method="post" action="#" th:action="@{/loginPage}" th:object="${user}">
+                <form method="post" action="#" th:action="@{/loginPage}" th:object="${user}" name="authForm">
                 <div id="loginTitle">???????????</div>
                 <div class="row">
                     <div class="col-md-5 col-sm-1">
