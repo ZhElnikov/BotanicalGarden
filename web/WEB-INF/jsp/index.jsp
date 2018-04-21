@@ -43,22 +43,22 @@
                                     ArrayList<String> links = new ArrayList<String>();
                                     if (role == 1) {
                                         pages.add("Профиль");
-                                        links.add("/BotanicalGarden/index.htm");
+                                        links.add("index.htm");
                                         pages.add("График и план");
-                                        links.add("/plan");
+                                        links.add("plan.htm");
                                         pages.add("Заявка на покупку");
-                                        links.add("/order");
+                                        links.add("order.htm");
                                     } else {
                                         pages.add("Профиль");
-                                        links.add("/BotanicalGarden/index.htm");
+                                        links.add("index.htm");
                                         pages.add("График и план");
-                                        links.add("/plan");
+                                        links.add("plan.htm");
                                         pages.add("Заявки на покупку");
-                                        links.add("/order");
+                                        links.add("order.htm");
                                         pages.add("Работа сада");
-                                        links.add("/garden");
+                                        links.add("garden.htm");
                                         pages.add("Экскурсии");
-                                        links.add("/excursion");
+                                        links.add("excursion.htm");
                                     }
                                     for (int i = 0; i < pages.size(); i++) {
                                 %>
