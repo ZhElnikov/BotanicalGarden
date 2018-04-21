@@ -2,6 +2,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <HTML>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -108,11 +110,12 @@
                     <textarea id="tasks" name="tasks" >${jobs}</textarea>
                 </div>
               
-            </div>
+            </div>               
         </div>
         <div class="container" id="footer">
             <div id="footerImage"></div>
             <div id="footerText">&copy; Oak Botanical Garden 2018</div>
+            <div id="footerText"><%=request.getAttribute("userrole")%></div>
         </div>
     </body>
 </HTML>>
