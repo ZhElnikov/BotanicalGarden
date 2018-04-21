@@ -24,8 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class GardenController {
     
     @RequestMapping(method = RequestMethod.GET)
-    public String showIndex(ModelMap model) {
-        
+    public String showGarden(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        model.addAttribute("userlogin", userLogin);
+        model.addAttribute("userrole", userRole);
         return "garden";
         
     }

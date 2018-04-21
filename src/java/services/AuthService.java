@@ -24,9 +24,10 @@ public class AuthService {
         for (int i = 1; i <= dao.amount(); i++){
             temp = dao.getUser(i);
             if(user.getLogin().equals(temp.getLogin()) && user.getPassword().equals(temp.getPassword())){
-                return 1;
+                return user.getRole();
             }
         }
-        return 0; 
+        return -1; 
     }
+    
 }

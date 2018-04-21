@@ -26,8 +26,9 @@ import services.AuthService;
 public class MyIndexController {
     
     @RequestMapping(method = RequestMethod.GET)
-    public String showIndex(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userCookie) {
-        model.addAttribute("userlogin", userCookie);
+    public String showIndex(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        model.addAttribute("userlogin", userLogin);
+        model.addAttribute("userrole", userRole);
         return "index";
         
     }

@@ -23,8 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class PlanController {
     
     @RequestMapping(method = RequestMethod.GET)
-    public String showIndex(ModelMap model) {
-        
+    public String showPlan(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        model.addAttribute("userlogin", userLogin);
+        model.addAttribute("userrole", userRole);
         return "plan";
         
     }
