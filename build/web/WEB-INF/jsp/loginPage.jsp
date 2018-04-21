@@ -22,7 +22,7 @@
 
                 <div class="row">
                     <div class="col-md-5 col-sm-1">
-                        <img src="https://i.imgur.com/VYTMGtC.png" height=200 id="logoBig">
+                        <img src="logo2.png" height=200 id="logoBig">
                     </div>
                     <div class="col-md-7" id="loginFields">
                         <div>

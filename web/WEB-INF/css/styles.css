@@ -1,5 +1,5 @@
 body {
-    background: url(http://fony-kartinki.ru/_ph/31/2/350561207.jpg) repeat;
+    background: url(1.jpg) repeat;
 }
 
 
@@ -128,4 +128,27 @@ background-color:#d3faa7;
 }
 #passwordField{
   margin:5px;
+}
+
+textarea{
+    width: 250px; /* Ширина поля в процентах */
+  /* Высота поля в пикселах */
+    resize: none;
+    margin-bottom: 20px;
+}
+
+#characterstic{
+    height: 165px;
+}
+
+#tasks{
+    height: 350px;
+}
+.profile{
+    width: 250px; 
+}
+
+#avatar{
+    border:1px solid black;
+    
 }
