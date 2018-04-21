@@ -12,7 +12,11 @@ import model.pojo.User;
  */
 public class AuthService {
     
-    public int check(User user){
+    static public void sayHello(){
+        System.out.println("hello");
+    }
+    
+    static public int checkAuth(User user){
         System.out.println("2");
         return 1; 
     }

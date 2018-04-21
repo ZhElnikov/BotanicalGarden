@@ -31,6 +31,7 @@ public class AuthController {
     @Autowired
     public void setAuthService(AuthService authService) {
         this.authService = authService;
+        authService.sayHello();
     }
  
     @RequestMapping(method = RequestMethod.GET)
@@ -38,6 +39,7 @@ public class AuthController {
         System.out.println("0");
         User user = new User();
         model.addAttribute(user);
+        AuthService.sayHello();
         return "loginPage";
     }
 
@@ -48,9 +50,10 @@ public class AuthController {
         System.out.println(user.getLogin()); 
         System.out.println(user.getPassword());   
         //System.out.println(authService.toString()); 
+        if (AuthService.checkAuth(user) == 1){
             System.out.println("3");  
             return "redirect:index.htm";
-        //}
-       // return "loginPage";  
+        }
+        return "loginPage";  
     }
 }

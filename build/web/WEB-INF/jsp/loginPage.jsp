@@ -36,7 +36,7 @@
                             <span>??????</span>
                         </div>
                         <input type="password" th:value="${user.password}" id="password" name="password"></div>
-                       <a class="bigButton" href="onSubmit" id="loginBtn" action="onSubmit">????</a>
+                        <input class="bigButton" type="submit" value="Войти"></div>
                     </div>
                 </div>
                 </form>
