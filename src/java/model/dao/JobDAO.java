@@ -5,10 +5,28 @@
  */
 package model.dao;
 
+import java.util.List;
+import model.pojo.Job;
+
 /**
  *
  * @author 7853j
  */
-public class JobDAO {
+public class JobDAO extends AbstractDAO{
     
+    Job job;
+    
+    public void getAllNotes(){
+        executeHQL("from Job");
+    }
+    
+    public List<Object> getJobsForUser(int i){
+        executeHQL("from Job where id_user = " + i);
+        return list;
+    }
+    
+    public int amount(){
+        getAllNotes();
+        return list.size();
+    }
 }

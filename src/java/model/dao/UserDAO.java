@@ -17,16 +17,18 @@ import org.hibernate.Session;
 public class UserDAO extends AbstractDAO{
     User user;
     
-    public void UserDao(){
-       
-    }
-    
     public void getAllNotes(){
         executeHQL("from User");
     }
     
     public User getUser(int i){
         executeHQL("from User where id_user = " + i);
+        this.user = (User) list.get(0);
+        return this.user;
+    }
+    
+    public User getUserByLogin(String login){
+        executeHQL("From User where login like '" + login + "'");
         this.user = (User) list.get(0);
         return this.user;
     }

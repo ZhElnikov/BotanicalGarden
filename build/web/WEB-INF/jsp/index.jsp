@@ -24,7 +24,7 @@
                     </div>
                     <div>
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                        <span><a action="" method="" > Выход </a></span>
+                        <span><a action="" method="" href="login.htm"> Выход </a></span>
                     </div>
                 </div>
             </div>
@@ -32,13 +32,13 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">Личный кабинет</a>
+                            <a class="navbar-brand" href="index.htm">Личный кабинет</a>
                         </div>
                         <div id="mainmenu">
 
                             <ul class="nav navbar-nav">
                                 <%
-                                    int role = 0; //user
+                                    int role = 0; //user // Role - userrole(String)
                                     ArrayList<String> pages = new ArrayList<String>();
                                     ArrayList<String> links = new ArrayList<String>();
                                     if (role == 1) {
@@ -75,9 +75,9 @@
             <%
                 String src="";
                 if (role == 1) {
-src = "user.png";
+                    src = "user.png";
                 } else {
-src = "manager.png";
+                    src = "manager.png";
                 }
 
             %>   
@@ -89,18 +89,18 @@ src = "manager.png";
                
                         <div class="col-md-3">
                             <div>Логин</div>
-                            <input class="profile" type="text" id="login" name="login" readonly> 
+                            <input class="profile" type="text" id="login" name="login" value="${userlogin}" readonly> 
                             <div>Имя</div>
-                            <input class="profile" type="text" id="name" name="name" readonly> 
+                            <input class="profile" type="text" id="name" name="name" value="${profile.getName()}" readonly> 
                             <div>Фамилия</div>
-                            <input class="profile" type="text" id="surname" name="surname" readonly> 
+                            <input class="profile" type="text" id="surname" name="surname" value="${profile.getSurname()}" readonly> 
                             <div>Должность</div>
-                            <input class="profile" type="text" id="position" name="position" readonly> 
+                            <input class="profile" type="text" id="position" name="position" value="${profile.getSpecialization()}" readonly> 
                             <div>Характеристика</div>
-                            <textarea id="characterstic" name="characterstic" readonly>486945612</textarea>  </div>  
+                            <textarea id="characterstic" name="characterstic" readonly>${profile.getAbout()} </textarea>  </div>  
                             <div class="col-md-3">
                     <span>Задания</span>
-                    <textarea id="tasks" name="tasks" >fgbtyn</textarea>
+                    <textarea id="tasks" name="tasks" >${jobs}</textarea>
                 </div>
               
             </div>

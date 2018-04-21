@@ -5,18 +5,14 @@
  */
 package controllers;
 
-import model.pojo.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
-import services.AuthService;
-
+import model.pojo.Profile;
+import services.ProfileService;
+import services.JobService;
 /**
  *
  * @author 7853j
@@ -27,6 +23,10 @@ public class MyIndexController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String showIndex(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        Profile profile = ProfileService.getLoginProfile(userLogin);
+        String jobs = JobService.getJobs(userLogin);
+        model.addAttribute("jobs", jobs);
+        model.addAttribute("profile", profile);
         model.addAttribute("userlogin", userLogin);
         model.addAttribute("userrole", userRole);
         return "index";
