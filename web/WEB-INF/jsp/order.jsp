@@ -24,7 +24,7 @@
                     </div>
                     <div>
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                        <span><a action="" method="" > Выход </a></span>
+                        <span><a action="" method="" href="login.htm"> Выход </a></span>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">Личный кабинет</a>
+                            <a class="navbar-brand" href="index.htm">Личный кабинет</a>
                         </div>
                         <div id="mainmenu">
 
@@ -43,23 +43,23 @@
                                     ArrayList<String> links = new ArrayList<String>();
                                     if (role == "1") {
                                         pages.add("Профиль");
-                                        links.add("/BotanicalGarden/index.htm");
+                                        links.add("index.htm");
                                         pages.add("График и план");
-                                        links.add("/plan");
+                                        links.add("plan.htm");
                                         pages.add("Заявка на покупку");
-                                        links.add("/order");
+                                        links.add("order.htm");
                                     }
                                     if (role == "2") {
                                         pages.add("Профиль");
-                                        links.add("/BotanicalGarden/index.htm");
+                                        links.add("index.htm");
                                         pages.add("График и план");
-                                        links.add("/plan");
+                                        links.add("plan.htm");
                                         pages.add("Заявки на покупку");
-                                        links.add("/order");
+                                        links.add("order.htm");
                                         pages.add("Работа сада");
-                                        links.add("/garden");
+                                        links.add("garden.htm");
                                         pages.add("Экскурсии");
-                                        links.add("/excursion");
+                                        links.add("excursion.htm");
                                     }
                                     for (int i = 0; i < pages.size(); i++) {
                                 %>
