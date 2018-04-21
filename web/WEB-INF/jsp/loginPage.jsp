@@ -18,7 +18,7 @@
             <div class="panel-body">
 
                 <form method="post" action="#" th:action="@{/loginPage}" th:object="${user}" name="authForm">
-                <div id="loginTitle">???????????</div>
+                <div id="loginTitle">Авторизация</div>
 
                 <div class="row">
                     <div class="col-md-5 col-sm-1">
@@ -28,12 +28,12 @@
                         <div>
                         <div id="loginField">
                             <span class="glyphicon glyphicon-user" aria-hidden="true" path="login"></span>
-                            <span>?????</span>
+                            <span>Логин</span>
                         </div>
                         <input type="text" th:value="${user.login}" id="login" name="login"> 
                         <div id="passwordField">
                             <span class="glyphicon glyphicon-lock" aria-hidden="true" path="login"></span>
-                            <span>??????</span>
+                            <span>Пароль</span>
                         </div>
                         <input type="password" th:value="${user.password}" id="password" name="password"></div>
                         <input class="bigButton" type="submit" value="Войти"></div>
