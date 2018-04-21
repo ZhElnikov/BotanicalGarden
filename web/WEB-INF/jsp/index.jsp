@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <%@page import="org.springframework.web.servlet.DispatcherServlet"%>
+=======
+<%@page import="org.springframework.ui.ModelMap"%>
+>>>>>>> 4152336142286e463b15d632a6d18ae8e285c0c2
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -50,10 +54,11 @@
                                         }
                                     }
                                     
-                                    int role = 0; //user // Role - userrole(String)
+                                    String role = "0"; //user // Role - userrole(String)
+
                                     ArrayList<String> pages = new ArrayList<String>();
                                     ArrayList<String> links = new ArrayList<String>();
-                                    if (role == 1) {
+                                    if (role.equals("1")) {
                                         pages.add("Профиль");
                                         links.add("index.htm");
                                         pages.add("График и план");
@@ -86,7 +91,7 @@
 
             <%
                 String src="";
-                if (role == 1) {
+                if (role.equals("1")) {
                     src = "user.png";
                 } else {
                     src = "manager.png";
