@@ -117,7 +117,7 @@ background-color:#d3faa7;
   text-decoration: none;
   box-shadow:  #d3faa7;
   color: white;
-  transform: translateY(-7px);
+  transform: translateY(-3px);
 }
 #loginFields{
   margin-top:20px;
@@ -151,4 +151,57 @@ textarea{
 #avatar{
     border:1px solid black;
     
+}
+#orderInput{
+    width: 200px; 
+    margin-bottom: 15px;
+}
+
+.radiobtn{
+margin-bottom:10px
+}
+#order{
+     width: 400px; 
+    margin-bottom: 15px;
+    height:250px;
+}
+.centerPos{
+    text-align:center;
+}
+#orderBtn{
+margin-left:30px;
+margin-top:-5px;
+}
+
+.radioBtn{
+  margin-right: 100px;
+}
+
+.aproveBtn{
+  text-decoration: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 10px;
+ 
+  padding:5px;
+  background: #9fdd7a;
+
+  float:rigth;
+
+}
+
+.declineBtn{
+  text-decoration: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 10px;
+ 
+  padding:5px;
+  background: #ff8080;
+}
+
+#smallOrder{
+    margin-top:15px;
+    margin-bottom:-2px;
+    width:314px;
 }
