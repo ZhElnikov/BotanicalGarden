@@ -19,7 +19,7 @@
             <div class="col-md-9 " id="accountData">
                 <div>
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    <span id="username">название учетной записи</span>
+                    <span id="username">${userlogin}</span>
                 </div>
                 <div>
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
