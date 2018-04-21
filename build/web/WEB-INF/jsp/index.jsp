@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <HTML>
@@ -34,11 +35,29 @@
                         <a class="navbar-brand" href="#">Личный кабинет</a>
                     </div>
                     <div id="mainmenu">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">Page 0</a></li>
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
+                        
+                            <ul class="nav navbar-nav">
+                        <%
+                        int role = 1; //user
+                        ArrayList<String> pages = new ArrayList<String>();
+                        ArrayList<String> links = new ArrayList<String>();
+                        if(role==1){
+                            pages.add("Профиль"); links.add("/BotanicalGarden/index.htm");
+                            pages.add("График и план"); links.add("/plan");
+                            pages.add("Заявка на покупку");links.add("/order");
+                        }  else {
+                            pages.add("Профиль"); links.add("/BotanicalGarden/index.htm");
+                            pages.add("График и план"); links.add("/plan");
+                            pages.add("Заявки на покупку");links.add("/order");
+                            pages.add("Работа сада");links.add("/garden");
+                            pages.add("Экскурсии");links.add("/excursion");
+                        }
+                        for (int i=0;i<pages.size();i++){
+                        %>
+                        <li><a href=<%=links.get(i)%>>
+                                    <%=pages.get(i)%>
+                            </a></li>
+                         <%}%>   
                         </ul>
                     </div>
                 </div>
