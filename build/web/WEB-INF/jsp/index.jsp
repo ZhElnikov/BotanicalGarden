@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=windows-1251"
-    pageEncoding="windows-1251"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <HTML>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -19,11 +19,11 @@
             <div class="col-md-9 " id="accountData">
                 <div>
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    <span id="username">название учетной записи</span>
+                    <span id="username">РЅР°Р·РІР°РЅРёРµ СѓС‡РµС‚РЅРѕР№ Р·Р°РїРёСЃРё</span>
                 </div>
                 <div>
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                    <span><a action="" method="" > Выход </a></span>
+                    <span><a action="" method="" > Р’С‹С…РѕРґ </a></span>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Личный кабинет</a>
+                        <a class="navbar-brand" href="#">Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚</a>
                     </div>
                     <div id="mainmenu">
                         <ul class="nav navbar-nav">
@@ -46,7 +46,7 @@
         </div>
        
        <div class="panel panel-default">
-       <div class="panel-heading">Задание 1</div>
+       <div class="panel-heading">Р—Р°РґР°РЅРёРµ 1</div>
             <div class="panel-body">
             
             </div>

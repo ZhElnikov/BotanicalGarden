@@ -31,7 +31,6 @@ public class AuthController {
     @Autowired
     public void setAuthService(AuthService authService) {
         this.authService = authService;
-        authService.sayHello();
     }
  
     @RequestMapping(method = RequestMethod.GET)
