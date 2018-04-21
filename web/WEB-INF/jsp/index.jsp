@@ -42,15 +42,15 @@
                         ArrayList<String> pages = new ArrayList<String>();
                         ArrayList<String> links = new ArrayList<String>();
                         if(role==1){
-                            pages.add("Профиль"); links.add("/BotanicalGarden/index.htm");
-                            pages.add("График и план"); links.add("/plan");
-                            pages.add("Заявка на покупку");links.add("/order");
+                            pages.add("Профиль"); links.add("index.htm");
+                            pages.add("График и план"); links.add("plan.htm");
+                            pages.add("Заявка на покупку");links.add("order.htm");
                         }  else {
-                            pages.add("Профиль"); links.add("/BotanicalGarden/index.htm");
-                            pages.add("График и план"); links.add("/plan");
-                            pages.add("Заявки на покупку");links.add("/order");
-                            pages.add("Работа сада");links.add("/garden");
-                            pages.add("Экскурсии");links.add("/excursion");
+                            pages.add("Профиль"); links.add("index.htm");
+                            pages.add("График и план"); links.add("plan.htm");
+                            pages.add("Заявки на покупку");links.add("order.htm");
+                            pages.add("Работа сада");links.add("garden.htm");
+                            pages.add("Экскурсии");links.add("excursion.htm");
                         }
                         for (int i=0;i<pages.size();i++){
                         %>

@@ -15,12 +15,17 @@
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
     define an explicit mapping for it.
+    
     -->
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
                 <prop key="index.htm">myIndexController</prop>
                 <prop key="login.htm">authController</prop>
+                <prop key="plan.htm">planController</prop>
+                <prop key="order.htm">orderController</prop>
+                <prop key="garden.htm">gardenController</prop>
+                <prop key="excursion.htm">excursionController</prop>
             </props>
         </property>
     </bean>
@@ -47,7 +52,10 @@
     <bean name="authService" class="services.AuthService" />
     
     <bean id="authController" class="controllers.AuthController" />
-     <bean id="myIndexController" class="controllers.MyIndexController" />
-    
+    <bean id="myIndexController" class="controllers.MyIndexController" />
+    <bean id="planController" class="controllers.PlanController" />
+    <bean id="orderController" class="controllers.OrderController" />
+    <bean id="gardenController" class="controllers.GardenController" />
+    <bean id="excursionController" class="controllers.ExcursionController" />
     	
 </beans>
