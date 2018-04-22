@@ -6,16 +6,20 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <style>
             <%@include file="/WEB-INF/css/styles.css"%>    
         </style>
+        <script>
+            <%@include file="/WEB-INF/js/order.js"%>
+        </script>
     </head>
 
     <body>
         <div class="container" id="wrap">
             <div class="row">
                 <div class="col-md-3 col-sm-1">
-                    <img src="logo2.png" height='150' id='logo'/>
+                    <img src="logo2.png" height='100' id='logo'/>
                 </div>
                 <div class="col-md-9 " id="accountData">
                     <div>
@@ -76,39 +80,53 @@
             %>   
             <div class="row">         
                 <div class="col-md-4 col-md-offset-4 ">
-            <FORM method="post" action="#" th:action="" th:object="" name="orderForm">
-                <div class="radiobtn">
-                <input type="radio" name="target" value="fertilizer"> Удобрение 
-                <input type="radio" name="target" value="tree" checked> Саженец
+                    <FORM method="post" action="#" th:action="" th:object="" name="orderForm">
+                        <div class="radiobtn">
+                            <div class="row">         
+                                <div class="col-md-6 ">
+                            <input type="radio" name="target" value="fertilizer"> Удобрение 
+                            </div>
+                                 <div class="col-md-5" >
+                            <input type="radio" name="target" value="tree" checked> Саженец
+                             </div>
+                                </div>
+                        </div>
+                        <div>Название заявки</div> 
+                        <input type="text" th:value="" id="orderInput" name="orderInput"> 
+                        <div>Обоснование заявки</div> 
+                        <textarea id="order" name="order" ></textarea>
+                        <div class="centerPos">
+                            <input class="bigButton" id = "orderBtn" type="submit" value="Подать заявку"></div>             
+                    </FORM>
+                </div></div>
+            <div class="row">      
+                <%}
+                    if (role.equals("2")) {
+                        for (int i = 0; i < 5; i++) {
+                        String textareaid = "textareaid" + String.valueOf(i);
+                        String panelid = "panelid" + String.valueOf(i);
+                        String purposeid = "purposeid" + String.valueOf(i);
+                        String amountid = "amountid" + String.valueOf(i);
+                        String approvebtn = "approvebtn" + String.valueOf(i);
+                        String declinebtn = "declinebtn" + String.valueOf(i);
+                %>       
+                <div class="col-md-4">     
+                    <form method="post"  th:object="" name="planForm">
+                        <div class="panel panel-default">
+                            <div class="panel-body" id =<%=panelid%>>
+                                <input type="text" th:value="" id=<%=purposeid%> name="purpose" readonly> -
+                                <input type="text" th:value="" name="amount" id=<%=amountid%>  readonly> 
+                                <div>
+                                    <textarea class = "smallOrder" name="order" id=<%=textareaid%>  readonly></textarea>   
+                                </div>
+                                <input class="aproveBtn" type="submit" value="Подтвердить" id = <%=approvebtn%> > 
+                                <input class="declineBtn" type="submit" value="Отказать" id = <%=declinebtn%> >
+                            </div>
+                        </div> 
+                    </form>
                 </div>
-                <div>Название заявки</div> 
-                <input type="text" th:value="" id="orderInput" name="orderInput"> 
-                <div>Обоснование заявки</div> 
-                <textarea id="order" name="order" ></textarea>
-                <div class="centerPos">
-                <input class="bigButton" id = "orderBtn" type="submit" value="Подать заявку"></div>             
-            </FORM>
-</div></div>
-        <div class="row">      
-            <%}
-            if (role.equals("2")) {
-for(int i=0;i<5;i++) {
-           %>       
-                <div class="col-md-4">            
-<div class="panel panel-default">
-    <div class="panel-body">
-        <input type="text" th:value="" id="purpose" name="purpose"> -
-        <input type="text" th:value="" id="amount" name="amount"> 
-        <div>
-        <textarea id="smallOrder" name="order" ></textarea>   
-        </div>
-        <input class="aproveBtn" id = "aproveBtn" type="submit" value="Подтвердить"> 
-        <input class="declineBtn" id = "declineBtn" type="submit" value="Отказать">
-      </div>
-</div>        
-</div>
-
-            <%}}%>
+                <%}
+                    }%>
             </div>
         </div>
         <div class="container" id="footer">
