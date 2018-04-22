@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -114,7 +115,9 @@
 
 
             <div class="row"> 
-                <%for (int i = 0; i < 5; i++) {
+                <%
+                    List<String> allJobs = (List<String>) request.getAttribute("alljobs");
+                    for (int i = 0; i < allJobs.size(); i++) {
                         String textareaid = "textareaid" + String.valueOf(i);
                         String panelid = "panelid" + String.valueOf(i);
                         String buttonid = "buttonid" + String.valueOf(i);
@@ -126,7 +129,7 @@
 
                             <div class="panel-body" id="<%=panelid%>">
                                 <div>
-                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%>  readonly></textarea>   
+                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%>  readonly><%=allJobs.get(i)%></textarea>   
                                 </div>
                                 <input class="deleteBtn" type="submit" value="Удалить" id = <%=buttonid%> >
                             </div>
@@ -140,7 +143,9 @@
                 if (role.equals("1")) {
             %>
             <div class="row"> 
-                <%for (int i = 0; i < 5; i++) {%>
+                <%
+                    List<String> userJobs = (List<String>) request.getAttribute("userjobs");
+                    for (int i = 0; i < userJobs.size(); i++) {%>
                 <div class="col-md-4"> 
                     <form method="post"   name="planForm">
                         <div class="panel panel-default">
@@ -150,7 +155,7 @@
                             %>
                             <div class="panel-body" id=<%=panelid%>>
                                 <div>
-                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%> readonly></textarea>   
+                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%> readonly><%=userJobs.get(i)%></textarea>   
                                 </div>
                                 <input class="completeBtn" type="submit" value="Выполнено" id = <%=buttonid%>>
                             </div>

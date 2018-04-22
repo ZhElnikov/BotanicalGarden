@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import services.JobService;
 /**
  *
  * @author 7853j
@@ -24,8 +26,12 @@ public class PlanController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String showPlan(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        List<String> userJobs = JobService.getUserJobsList(userLogin);
+        List<String> allJobs = JobService.getAllJobsList();
         model.addAttribute("userlogin", userLogin);
         model.addAttribute("userrole", userRole);
+        model.addAttribute("userjobs", userJobs);
+        model.addAttribute("alljobs", allJobs);
         return "plan";
         
     }

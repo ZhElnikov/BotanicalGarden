@@ -27,7 +27,7 @@ public class MyIndexController {
     @RequestMapping(method = RequestMethod.GET)
     public String showIndex(HttpServletRequest request, ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
         Profile profile = ProfileService.getLoginProfile(userLogin);
-        String jobs = JobService.getJobs(userLogin);
+        String jobs = JobService.getJobsString(userLogin);
         model.addAttribute("jobs", jobs);
         model.addAttribute("profile", profile);
         model.addAttribute("userlogin", userLogin);
