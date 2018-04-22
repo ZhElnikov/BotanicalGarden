@@ -28,6 +28,15 @@
                 <prop key="order/response.htm">orderController</prop>
                 <prop key="order/add.htm">orderController</prop>
                 <prop key="garden.htm">gardenController</prop>
+                <prop key="garden/result.htm">gardenController</prop>
+                <prop key="garden/1.htm">gardenController</prop>
+                <prop key="garden/2.htm">gardenController</prop>
+                <prop key="garden/3.htm">gardenController</prop>
+                <prop key="garden/4.htm">gardenController</prop>
+                <prop key="garden/5.htm">gardenController</prop>
+                <prop key="garden/6.htm">gardenController</prop>
+                <prop key="garden/7.htm">gardenController</prop>
+                <prop key="report.htm">gardenController</prop>
                 <prop key="excursion.htm">excursionController</prop>
                 
             </props>

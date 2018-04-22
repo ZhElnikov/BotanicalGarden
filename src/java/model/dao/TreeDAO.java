@@ -5,10 +5,21 @@
  */
 package model.dao;
 
+import java.util.List;
+
 /**
  *
  * @author 7853j
  */
-public class TreeDAO {
+public class TreeDAO extends AbstractDAO{
     
+    public List<Object> getAllNotes(){
+        executeHQL("from Tree");
+        return list;
+    }
+    
+    public int amount(){
+        getAllNotes();
+        return list.size();
+    }
 }
