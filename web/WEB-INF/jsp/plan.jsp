@@ -6,9 +6,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <style>
             <%@include file="/WEB-INF/css/styles.css"%>    
         </style>
+        <script>
+            <%@include file="/WEB-INF/js/plan.js"%>
+        </script>
+
     </head>
 
     <body>
@@ -38,7 +43,7 @@
 
                             <ul class="nav navbar-nav">
                                 <%
-                                    String role = "2"; //user // Role - userrole(String)
+                                    String role = "1"; //user // Role - userrole(String)
                                     ArrayList<String> pages = new ArrayList<String>();
                                     ArrayList<String> links = new ArrayList<String>();
                                     if (role.equals("1")) {
@@ -71,9 +76,9 @@
                     </div>
                 </nav>
             </div>
-                            
+
             <%if (role.equals("2")) {%>
-            <form method="post" action="#" th:action="" th:object="" name="planForm">
+            <form method="post" th:object="" name="planForm">
                 <div class="row">         
                     <div class="col-md-7 col-md-offset-4">
                         <div class="row">         
@@ -87,7 +92,7 @@
                             </div>
                         </div>
                         <div>Описание задачи</div> 
-                        <textarea id="description" name="description" ></textarea>
+                        <textarea id="description" name="description" readonly></textarea>
                         <div class="row">         
                             <div class="col-md-4">
                                 <div>Дедлайн</div> 
@@ -109,33 +114,48 @@
 
 
             <div class="row"> 
-                <%for(int i=0;i<5;i++) {%>
-                <div class="col-md-4">            
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div>
-                                <textarea id="smallOrder2" name="order" ></textarea>   
+                <%for (int i = 0; i < 5; i++) {
+                        String textareaid = "textareaid" + String.valueOf(i);
+                        String panelid = "panelid" + String.valueOf(i);
+                        String buttonid = "buttonid" + String.valueOf(i);
+                %>
+                
+                    <div class="col-md-4">  
+                        <form method="post"  th:object="" name="planForm">
+                        <div class="panel panel-default">
+
+                            <div class="panel-body" id="<%=panelid%>">
+                                <div>
+                                    <textarea class="smallOrder2" id=<%=textareaid%> name="order" readonly></textarea>   
+                                </div>
+                                <input class="deleteBtn" type="submit" value="Удалить" id = <%=buttonid%> >
                             </div>
-                            <input class="declineBtn" id = "deleteBtn" type="submit" value="Удалить">
-                        </div>
-                    </div>        
-                </div>
+                        </div>   
+                             </form>
+                    </div>
+               
                 <%}%>
             </div>
-            <%} 
-            if (role.equals("1")) {
+            <%}
+                if (role.equals("1")) {
             %>
             <div class="row"> 
-                <%for(int i=0;i<5;i++) {%>
-                <div class="col-md-4">            
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div>
-                                <textarea id="smallOrder2" name="order" ></textarea>   
+                <%for (int i = 0; i < 5; i++) {%>
+                <div class="col-md-4"> 
+                    <form method="post"   name="planForm">
+                        <div class="panel panel-default">
+                            <%String textareaid = "textareaid" + String.valueOf(i);
+                                String panelid = "panelid" + String.valueOf(i);
+                                String buttonid = "buttonid" + String.valueOf(i);
+                            %>
+                            <div class="panel-body" id=<%=panelid%>>
+                                <div>
+                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%> readonly></textarea>   
+                                </div>
+                                <input class="completeBtn" type="submit" value="Выполнено" id = <%=buttonid%>>
                             </div>
-                            <input class="completeBtn" id = "completeBtn" type="submit" value="Выполнено">
-                        </div>
-                    </div>        
+                        </div>  
+                    </form>
                 </div>
                 <%}%>
             </div>
