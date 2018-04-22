@@ -1,3 +1,8 @@
+
+<%@page import="model.pojo.RequestFert"%>
+<%@page import="model.pojo.RequestTree"%>
+<%@page import="java.util.List"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -77,32 +82,49 @@
             </div>
             <%
                 if (role.equals("1")) {
+                    Cookie cookies[] = request.getCookies();
+                    int number = 0;
+                    for (int i = 0; i < cookies.length; i++){ 
+                        if (cookies[i].getName().equals("user")) { 
+                            number = i;
+                        } 
+                    }
+                    String user = cookies[number].getValue();
+                    
             %>   
             <div class="row">         
                 <div class="col-md-4 col-md-offset-4 ">
-                    <FORM method="post" action="#" th:action="" th:object="" name="orderForm">
+                    <FORM method="post" th:action="@{/order/add.htm}" th:object="${attrs}" action="order/add.htm"name="orderAddForm">
+                        <input type="hidden" th:value="${attr.user}" name="user" id="user" value="<%=user%>">
                         <div class="radiobtn">
                             <div class="row">         
                                 <div class="col-md-6 ">
-                            <input type="radio" name="target" value="fertilizer"> Удобрение 
+                            <input type="radio" th:value="${attr.type}" name="type" id="type" value="fertilizer"> Удобрение 
                             </div>
                                  <div class="col-md-5" >
-                            <input type="radio" name="target" value="tree" checked> Саженец
+                            <input type="radio" th:value="${attr.type}" name="type" id="type" value="tree" checked> Саженец
                              </div>
                                 </div>
                         </div>
-                        <div>Название заявки</div> 
-                        <input type="text" th:value="" id="orderInput" name="orderInput"> 
+                        <div>Наименование</div> 
+                        <input type="text" th:value="${attr.name}" id="name" name="name">
+                        <div>Количество</div> 
+                        <input type="text" th:value="${attr.q}" id="q" name="q">
                         <div>Обоснование заявки</div> 
-                        <textarea id="order" name="order" ></textarea>
+                        <textarea id="body" name="body" ></textarea>
                         <div class="centerPos">
                             <input class="bigButton" id = "orderBtn" type="submit" value="Подать заявку"></div>             
                     </FORM>
                 </div></div>
             <div class="row">      
                 <%}
+
+                    //List<RequestFert> fertList = (List<RequestFert>) request.getAttribute("fertList");
                     if (role.equals("2")) {
-                        for (int i = 0; i < 5; i++) {
+                        List<RequestTree> treeList = (List<RequestTree>) request.getAttribute("treeList");
+                        List<String> treeNames = (List<String>) request.getAttribute("treeNames");
+                        for (int i = 0; i < treeList.size(); i++) {
+                        RequestTree reqtree = treeList.get(i);
                         String textareaid = "textareaid" + String.valueOf(i);
                         String panelid = "panelid" + String.valueOf(i);
                         String purposeid = "purposeid" + String.valueOf(i);
@@ -111,22 +133,51 @@
                         String declinebtn = "declinebtn" + String.valueOf(i);
                 %>       
                 <div class="col-md-4">     
-                    <form method="post"  th:object="" name="planForm">
+                    <form method="post" th:action="@{/order/response.htm}" th:object="${attrs}" action="order/response.htm" name="orderForm">
                         <div class="panel panel-default">
                             <div class="panel-body" id =<%=panelid%>>
-                                <input type="text" th:value="" name="purpose" id=<%=purposeid%> readonly> -
-                                <input type="text" th:value="" name="amount" id=<%=amountid%>  readonly> 
+                                 <input type="hidden" th:value="${attrs.id}" id="id" name="id" value="<%=reqtree.getIdRequestTree()%>">
+                                 <input type="hidden" th:value="${attrs.type}" id="type" name="type" value="Деревья"> 
+                                <input type="text" value="<%=treeNames.get(i)%>" name="names" id="names" readonly> -
+                                <input type="text" value="<%=reqtree.getQuantity()%>" name="amount" id=<%=amountid%>  readonly> 
                                 <div>
-                                    <textarea class = "smallOrder" name="order" id=<%=textareaid%>  readonly></textarea>   
+                                    <textarea class = "smallOrder" name="order" id=<%=textareaid%>  readonly><%=reqtree.getBody()%></textarea>   
                                 </div>
-                                <input class="aproveBtn" type="submit" value="Подтвердить" id = <%=approvebtn%> > 
-                                <input class="declineBtn" type="submit" value="Отказать" id = <%=declinebtn%> >
+                                <input class="aproveBtn" th:value="${attrs.status}" type="submit" value="Подтвердить" id="status" name="status" > 
+                                <input class="declineBtn" th:value="${attrs.status}" type="submit" value="Отказать" id="status" name="status" >
                             </div>
                         </div> 
                     </form>
                 </div>
                 <%}
-                    }%>
+                    List<RequestFert> fertList = (List<RequestFert>) request.getAttribute("fertList");
+                    for (int i = 0; i < fertList.size(); i++) {
+                        RequestFert reqfert = fertList.get(i);
+                        String textareaid = "textareaid" + String.valueOf(i);
+                        String panelid = "panelid" + String.valueOf(i);
+                        String purposeid = "purposeid" + String.valueOf(i);
+                        String amountid = "amountid" + String.valueOf(i);
+                        String approvebtn = "approvebtn" + String.valueOf(i);
+                        String declinebtn = "declinebtn" + String.valueOf(i);
+                %> 
+                <div class="col-md-4">     
+                    <form method="post" th:action="@{/order/response.htm}" th:object="${attrs}" action="order/response.htm" name="orderForm">
+                        <div class="panel panel-default">
+                            <div class="panel-body" id =<%=panelid%>>
+                                <input type="hidden" th:value="${attrs.id}" id="id" name="id" value="<%=reqfert.getIdRequestFert()%>">
+                                <input type="hidden" th:value="${attrs.type}" id="type" name="type" value="Удобрения"> 
+                                <input type="text" value="<%=reqfert.getFertName()%>" name="names" id="names" readonly> -
+                                <input type="text" value="<%=reqfert.getQuantity()%>" name="amount" id=<%=amountid%>  readonly> 
+                                <div>
+                                    <textarea class = "smallOrder" name="order" id=<%=textareaid%>  readonly><%=reqfert.getBody()%></textarea>   
+                                </div>
+                                <input class="aproveBtn" th:value="${attrs.status}" type="submit" value="Подтвердить" id="status" name="status" > 
+                                <input class="declineBtn" th:value="${attrs.status}" type="submit" value="Отказать" id="status" name="status" >
+                            </div>
+                        </div> 
+                    </form>
+                </div>
+            <%}}%>
             </div>
         </div>
         <div class="container" id="footer">
