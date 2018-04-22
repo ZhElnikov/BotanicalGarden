@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-
-
 var response1 = document.cookie;
 if((response1).indexOf("error")!==-1){
    showError("invalid data! ",50);

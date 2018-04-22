@@ -94,7 +94,7 @@
 
         </div>
         
-                            
+         </div>                   
         <div class="container" id="footer">
             <div id="footerImage"></div>
             <div id="footerText">&copy; Oak Botanical Garden 2018</div>
