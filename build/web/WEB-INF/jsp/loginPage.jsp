@@ -7,12 +7,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-     <style>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <style>
     <%@include file="/WEB-INF/css/styles.css"%>    
-    </style>
+    </style>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    
+    <script> <%@include file="/WEB-INF/js/login.js"%></script>
 </head>
 
-<body>
+<body>   
+    <div class="error-holder">
+    <span>Error</span>
+</div>
     <div class="container">
         <div class="panel panel-default" id="loginForm">
             <div class="panel-body">
