@@ -64,4 +64,11 @@ public class OrderService {
     static public void changeStateFert(int id, int stat){
         fertdao.changeStatus(id, stat);
     }
+    
+    static public void addTreeReq(String user, String name, String body, int q){
+        treedao.add(user, name, body, q);
+    }
+    static public void addFertReq(String user, String name, String body, int q){
+        fertdao.add(user, name, body, q);
+    }
 }

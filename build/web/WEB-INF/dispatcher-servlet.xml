@@ -26,6 +26,7 @@
                 <prop key="plan/complete.htm">planController</prop>
                 <prop key="order.htm">orderController</prop>
                 <prop key="order/response.htm">orderController</prop>
+                <prop key="order/add.htm">orderController</prop>
                 <prop key="garden.htm">gardenController</prop>
                 <prop key="excursion.htm">excursionController</prop>
                 

@@ -6,6 +6,7 @@
 package controllers;
 
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import model.pojo.RequestFert;
 import model.pojo.RequestTree;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +44,7 @@ public class OrderController {
     }
     
     @RequestMapping(value = "/order/response.htm", method = RequestMethod.POST)
-    public String onApply(@ModelAttribute("attrs") Attributes attrs) {
-        System.out.println(attrs.getId());
-        System.out.println(attrs.getStatus()); 
-        System.out.println(attrs.getType());
+    public String onStatusChange(@ModelAttribute("attrs") Attributes attrs) {
         int id = Integer.parseInt(attrs.getId());
         int stat = 2;
         if (attrs.getStatus().equals("Подтвердить")){
@@ -61,6 +59,20 @@ public class OrderController {
         return "redirect:/order.htm";
     }
     
+    @RequestMapping(value = "/order/add.htm", method = RequestMethod.POST)
+    public String onAdd(@ModelAttribute("attrs") Attributes attrs, HttpServletResponse response) {
+        String body = attrs.getBody();
+        String name = attrs.getName();
+        String user = attrs.getUser();
+        int q = Integer.parseInt(attrs.getQ());
+        if (attrs.getType().equals("tree")){
+            OrderService.addTreeReq(user, name, body, q);
+        }
+        if (attrs.getType().equals("fertilizer")){
+            OrderService.addFertReq(user, name, body, q);
+        }
+        return "redirect:/order.htm";
+    }
 
     
 }

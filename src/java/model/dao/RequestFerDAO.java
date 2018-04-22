@@ -7,7 +7,10 @@ package model.dao;
 
 import java.util.List;
 import model.pojo.RequestFert;
+import model.pojo.RequestTree;
+import model.pojo.User;
 import model.util.NewHibernateUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -27,6 +30,21 @@ public class RequestFerDAO extends AbstractDAO{
         session.beginTransaction();
         RequestFert requestFert =  (RequestFert) session.get(RequestFert.class, id);
         requestFert.setStatus(stat);
+        session.saveOrUpdate(requestFert);
+        session.getTransaction().commit();
+        session.close();
+    }
+    public void add(String login, String name, String body, int q){
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        RequestFert requestFert = new RequestFert();
+        requestFert.setFertName(name);
+        UserDAO udao = new UserDAO();
+        User user = udao.getUserByLogin(login);
+        requestFert.setUser(user);
+        requestFert.setBody(body);
+        requestFert.setQuantity(q);
+        requestFert.setStatus(0);
         session.saveOrUpdate(requestFert);
         session.getTransaction().commit();
         session.close();
