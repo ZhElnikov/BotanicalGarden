@@ -1,3 +1,4 @@
+<%@page import="model.pojo.Job"%>
 <%@page import="model.pojo.Profile"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -150,18 +151,21 @@
             %>
             <div class="row"> 
                 <%
-                    List<String> userJobs = (List<String>) request.getAttribute("userjobs");
-                    for (int i = 0; i < userJobs.size(); i++) {%>
-                <div class="col-md-4"> 
-                    <form method="post"   name="planForm">
-                        <div class="panel panel-default">
-                            <%String textareaid = "textareaid" + String.valueOf(i);
+                    List<Job> userJobs = (List<Job>) request.getAttribute("userjobs");
+                    for (int i = 0; i < userJobs.size(); i++) {
+                                String textareaid = "textareaid" + String.valueOf(i);
                                 String panelid = "panelid" + String.valueOf(i);
                                 String buttonid = "buttonid" + String.valueOf(i);
-                            %>
+                                String nres = "Задание: " + userJobs.get(i).getBody() + "\r\nсрок - " + userJobs.get(i).getDeadline();
+                    %>
+                <div class="col-md-4"> 
+                    <form method="post" th:action="@{/plan/complete.htm}" th:object="${job}" action="plan/complete.htm"  name="planForm">
+                        <div class="panel panel-default">
+                            <input type="hidden" th:value="${job.idJob}" id="idJob" name="idJob" value="<%=userJobs.get(i).getIdJob()%>"  > 
+                            
                             <div class="panel-body" id=<%=panelid%>>
                                 <div>
-                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%> readonly><%=userJobs.get(i)%></textarea>   
+                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%> readonly><%=nres%></textarea>   
                                 </div>
                                 <input class="completeBtn" type="submit" value="Выполнено" id = <%=buttonid%>>
                             </div>

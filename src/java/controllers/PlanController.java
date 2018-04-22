@@ -31,7 +31,7 @@ public class PlanController {
     
     @RequestMapping(value = "/plan.htm", method = RequestMethod.GET)
     public String showPlan(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
-        List<String> userJobs = JobService.getUserJobsList(userLogin);
+        List<Job> userJobs = JobService.getUserJobsList(userLogin);
         List<String> allJobs = JobService.getAllJobsList();
         List<Profile> profiles = ProfileService.getAllProfiles();
         Job job = new Job();
@@ -57,8 +57,13 @@ public class PlanController {
     
     @RequestMapping(value = "/plan/delete.htm", method = RequestMethod.POST)
     public String onDelete(@ModelAttribute("job") Job job) {
-        //System.out.println(job.getIdJob());
         JobService.deleteJob(job);
+        return "redirect:/plan.htm";
+    }
+    
+    @RequestMapping(value = "/plan/complete.htm", method = RequestMethod.POST)
+    public String onComplete(@ModelAttribute("job") Job job) {
+        JobService.completeJob(job);
         return "redirect:/plan.htm";
     }
     

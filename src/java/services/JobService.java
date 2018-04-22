@@ -5,7 +5,9 @@
  */
 package services;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import model.dao.JobDAO;
 import model.dao.UserDAO;
@@ -34,7 +36,7 @@ public class JobService {
     
     static public List<String> getAllJobsList(){
         int amount  = dao.amount();
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         String nres;
         for (int i = 0; i < amount; i++){
             nres = dao.getStringJob(i);
@@ -43,21 +45,27 @@ public class JobService {
         return result; 
     }
     
-    static public List<String> getUserJobsList(String login){
+    static public List<Job> getUserJobsList(String login){
         User user = userdao.getUserByLogin(login);
         List<Object> jobs = getUserJobs(user);
-        List<String> result = new ArrayList<String>();
+        List<Job> result = new ArrayList<>();
         String nres;
         for (int i = 0; i < jobs.size(); i++){
             Job temp = (Job) jobs.get(i);
-            nres = "Задание: " + temp.getBody() + "\r\nсрок - " + temp.getDeadline();
-            result.add(nres);
+            result.add(temp);
         }
         return result;   
     }
     
     static public List<Object> getUserJobs(User user){
         List<Object> jobs = dao.getJobsForUser(user.getIdUser());
+        for (int i = 0; i < jobs.size(); i++) {
+            Job temp = (Job) jobs.get(i);
+            if (temp.getEndDate() != null){
+                jobs.remove(i);
+                i--;
+            }
+        }
         return jobs;
     }
     
@@ -67,5 +75,10 @@ public class JobService {
     
     static public void deleteJob(Job job){
         dao.delete(job.getIdJob());
+    }
+    
+    static public void completeJob(Job job){
+        String endDate = new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTime());
+        dao.complete(job.getIdJob(), endDate);
     }
 }

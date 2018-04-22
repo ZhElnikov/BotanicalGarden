@@ -14,6 +14,7 @@ public class RequestFert  implements java.io.Serializable {
      private String fertName;
      private int quantity;
      private String body;
+     private int status;
 
     public RequestFert() {
     }

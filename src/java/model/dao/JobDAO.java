@@ -59,6 +59,16 @@ public class JobDAO extends AbstractDAO{
         session.close();
     }
     
+    public void complete(int i, String endDate){
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Job job = (Job) session.load(Job.class, i);
+        job.setEndDate(endDate);
+        session.saveOrUpdate(job);
+        session.getTransaction().commit();
+        session.close();
+    }
+    
     public int amount(){
         getAllNotes();
         return list.size();
