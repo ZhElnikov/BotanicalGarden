@@ -8,9 +8,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <style>
-            <%@include file="/WEB-INF/css/styles.css"%>    
-        </style>
+        <style><%@include file="/WEB-INF/css/styles.css"%></style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>        
+        <script> <%@include file="/WEB-INF/js/main.js"%></script>
     </head>
 
     <body>
@@ -83,6 +83,7 @@
                 </form>
             </div>  
         </div>
+             <div class="scrolltop"></div>
         <div class="container" id="footer">
             <div id="footerImage"></div>
             <div id="footerText">&copy; Oak Botanical Garden 2018</div>

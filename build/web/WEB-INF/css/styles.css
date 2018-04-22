@@ -340,3 +340,30 @@ div.rect:hover{
     color: #ffffff; z-index: 999999; display: none;}
 
 .error-holder.error-holder-success {background-color: #35a63b;}
+
+.scrolltop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.75);
+    opacity: .5;
+    cursor: pointer;
+    transition: .3s;
+}
+.scrolltop:hover {
+    opacity: 0.9;
+    transition: .3s;
+}
+.scrolltop:after {
+    content: "top";
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+}

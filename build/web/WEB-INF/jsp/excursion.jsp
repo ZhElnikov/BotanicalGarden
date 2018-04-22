@@ -9,13 +9,16 @@
         <style>
             <%@include file="/WEB-INF/css/styles.css"%>    
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>        
+        <script> <%@include file="/WEB-INF/js/main.js"%></script>
     </head>
 
     <body>
-        <div class="container" id="wrap">
+        <div class="container" id="wrap">         
+            
             <div class="row">
                 <div class="col-md-3 col-sm-1">
-                    <img src="logo2.png" height='150' id='logo'/>
+                    <img src="logo2.png" height='100' id='logo'/>
                 </div>
                 <div class="col-md-9 " id="accountData">
                     <div>
@@ -68,11 +71,10 @@
                                     <%}%>   
                             </ul>
                         </div>
+                            
                     </div>
                 </nav>
             </div>
-
-
             <form method="post" action="#" th:action="" th:object="" name="planForm">
                 <div class="row">         
                     <div class="col-md-7 col-md-offset-4">
@@ -116,6 +118,7 @@
                 <%}%>
             </div>
         </div>
+        <div class="scrolltop"></div>
         <div class="container" id="footer">
             <div id="footerImage"></div>
             <div id="footerText">&copy; Oak Botanical Garden 2018</div>
