@@ -14,13 +14,13 @@
         <property name="body" type="string">
             <column name="body" not-null="true" />
         </property>
-        <property name="startDate" type="timestamp">
+        <property name="startDate" type="string">
             <column name="start_date" length="19" />
         </property>
-        <property name="endDate" type="timestamp">
+        <property name="endDate" type="string">
             <column name="end_date" length="19" />
         </property>
-        <property name="deadline" type="timestamp">
+        <property name="deadline" type="string">
             <column name="deadline" length="19" not-null="true" />
         </property>
     </class>

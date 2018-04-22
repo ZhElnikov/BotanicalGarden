@@ -60,4 +60,12 @@ public class JobService {
         List<Object> jobs = dao.getJobsForUser(user.getIdUser());
         return jobs;
     }
+    
+    static public void addJob(Job job, int userId){
+        dao.addWithId(job, userId);
+    }
+    
+    static public void deleteJob(Job job){
+        dao.delete(job.getIdJob());
+    }
 }

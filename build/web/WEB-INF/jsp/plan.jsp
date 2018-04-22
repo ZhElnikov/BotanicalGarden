@@ -1,3 +1,4 @@
+<%@page import="model.pojo.Profile"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -79,37 +80,43 @@
             </div>
 
             <%if (role.equals("2")) {%>
-            <form method="post" th:object="" name="planForm">
+            <form method="post" action="" th:action="@{/plan}" th:object="${job}"  th:object="${profile}" name="planForm">
                 <div class="row">         
                     <div class="col-md-7 col-md-offset-4">
                         <div class="row">         
                             <div class="col-md-4">
-                                <div>Начало</div> 
-                                <input type="date" th:value="" id="startDate" name="startDate" class="planinput"> 
+                                <div>Начало</div>
+                                <input type="text" th:value="${job.startDate}" id="startDate" name="startDate" class="planinput" > 
                             </div>
                 <div class="col-md-4">
-                                <div>Дедлайн</div> 
-                                <input type="date" th:value="" id="deadline" name="deadline" class="planinput">  
+                                <div>Дедлайн</div>
+                                <input type="text" th:value="${job.deadline}" id="deadline" name="deadline" class="planinput" > 
                             </div>
                         </div>
                         <div>Описание задачи</div> 
-                        <textarea id="description" name="description" readonly></textarea>
+                        <textarea id="body" name="body"></textarea>
                         <div class="row">         
                             
                             <div class="col-md-5">
                                 <div>Выбор работника</div> 
-                                <select id="choseWorker" name="choseWorker">
-                                    <option>работник</option>
-                                    <option>еще один</option>
-                                    <option>ослик</option>                                  
-                                </select>                        
+                                <select th:value="${profile.name}" id="name" name="name">
+                                     <%
+                                        List<Profile> profiles = (List<Profile>) request.getAttribute("profiles");
+                                        for (int i = 0; i < profiles.size(); i++) {
+                                            String string = (i + (int)1) + ". " + profiles.get(i).getName() + " " + profiles.get(i).getSurname();
+                                     %>
+                                    <option><%=string%></option>
+                                    <%}%>
+                                </select>  
                             </div>
                             <div class="col-md-4">
-                            <input class="bigButton" id = "createBtn" type="submit" value="Создать"> 
+                            <input class="bigButton" id ="createBtn" type="submit" value="Создать"> 
                         </div>
  </div>
                          </div>
                 </div>
+                
+               
             </form>  
 
 
@@ -123,9 +130,9 @@
                 %>
                 
                     <div class="col-md-4">  
-                        <form method="post"  th:object="" name="planForm">
+                        <form method="post" th:action="@{/plan/delete.htm}" th:object="${job}" action="plan/delete.htm" name="planForm">
                         <div class="panel panel-default">
-
+                            <input type="hidden" th:value="${job.idJob}" id="idJob" name="idJob" value="<%=i+1%>"  > 
                             <div class="panel-body" id="<%=panelid%>">
                                 <div>
                                     <textarea class="smallOrder2" name="order" id=<%=textareaid%>  readonly><%=allJobs.get(i)%></textarea>   

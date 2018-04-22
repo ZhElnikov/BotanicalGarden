@@ -13,19 +13,19 @@ public class Job  implements java.io.Serializable {
      private Integer idJob;
      private User user;
      private String body;
-     private Date startDate;
-     private Date endDate;
-     private Date deadline;
+     private String startDate;
+     private String endDate;
+     private String deadline;
 
     public Job() {
     }
 
 	
-    public Job(String body, Date deadline) {
+    public Job(String body, String deadline) {
         this.body = body;
         this.deadline = deadline;
     }
-    public Job(User user, String body, Date startDate, Date endDate, Date deadline) {
+    public Job(User user, String body, String startDate, String endDate, String deadline) {
        this.user = user;
        this.body = body;
        this.startDate = startDate;
@@ -54,25 +54,25 @@ public class Job  implements java.io.Serializable {
     public void setBody(String body) {
         this.body = body;
     }
-    public Date getStartDate() {
+    public String getStartDate() {
         return this.startDate;
     }
     
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
-    public Date getEndDate() {
+    public String getEndDate() {
         return this.endDate;
     }
     
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-    public Date getDeadline() {
+    public String getDeadline() {
         return this.deadline;
     }
     
-    public void setDeadline(Date deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 

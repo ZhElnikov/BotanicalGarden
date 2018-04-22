@@ -22,9 +22,11 @@
                 <prop key="index.htm">myIndexController</prop>
                 <prop key="login.htm">authController</prop>
                 <prop key="plan.htm">planController</prop>
+                <prop key="plan/delete.htm">planController</prop>
                 <prop key="order.htm">orderController</prop>
                 <prop key="garden.htm">gardenController</prop>
                 <prop key="excursion.htm">excursionController</prop>
+                
             </props>
         </property>
     </bean>

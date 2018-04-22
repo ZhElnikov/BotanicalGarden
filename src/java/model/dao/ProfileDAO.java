@@ -18,8 +18,9 @@ public class ProfileDAO extends AbstractDAO{
     
     Profile profile;
     
-    public void getAllNotes(){
+    public List<Object> getAllNotes(){
         executeHQL("from Profile");
+        return list;
     }
     
     public Profile getProfile(int i){

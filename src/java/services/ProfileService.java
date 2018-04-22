@@ -5,6 +5,8 @@
  */
 package services;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.dao.ProfileDAO;
 import model.dao.UserDAO;
 import model.pojo.Profile;
@@ -28,6 +30,15 @@ public class ProfileService {
     static public Profile getUserProfile(User user){
         Profile profile = dao.getProfile(user.getIdUser());
         return profile;
+    }
+    
+    static public List<Profile> getAllProfiles(){
+        List<Profile> profList = new ArrayList<Profile>();
+        List<Object> list = dao.getAllNotes();
+        for (int i = 0; i < list.size(); i++){
+            profList.add( (Profile) list.get(i));
+        }
+        return profList;
     }
     
 }

@@ -7,6 +7,7 @@ package model.dao;
 
 import java.util.List;
 import model.pojo.Job;
+import model.pojo.User;
 import model.util.NewHibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -37,6 +38,25 @@ public class JobDAO extends AbstractDAO{
     public List<Object> getJobsForUser(int i){
         executeHQL("from Job where id_user = " + i);
         return list;
+    }
+    
+    public void addWithId(Job job, int id){
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        User user = (User) session.get(User.class, id);
+        job.setUser(user);
+        session.save(job);
+        session.getTransaction().commit();
+        session.close();
+    }
+    
+    public void delete(int i){
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Job job = (Job) session.load(Job.class, i);
+        session.delete(job);
+        session.getTransaction().commit();
+        session.close();
     }
     
     public int amount(){

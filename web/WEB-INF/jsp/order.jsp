@@ -114,7 +114,7 @@
                     <form method="post"  th:object="" name="planForm">
                         <div class="panel panel-default">
                             <div class="panel-body" id =<%=panelid%>>
-                                <input type="text" th:value="" id=<%=purposeid%> name="purpose" readonly> -
+                                <input type="text" th:value="" name="purpose" id=<%=purposeid%> readonly> -
                                 <input type="text" th:value="" name="amount" id=<%=amountid%>  readonly> 
                                 <div>
                                     <textarea class = "smallOrder" name="order" id=<%=textareaid%>  readonly></textarea>   

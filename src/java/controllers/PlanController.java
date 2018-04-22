@@ -5,7 +5,11 @@
  */
 package controllers;
 
+import java.util.Arrays;
 import java.util.List;
+import model.pojo.Job;
+import model.pojo.Profile;
+import model.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,24 +20,46 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import services.JobService;
+import services.ProfileService;
 /**
  *
  * @author 7853j
  */
 @Controller
-@RequestMapping("/plan.htm")
+@SessionAttributes({"job", "profile"})
 public class PlanController {
     
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/plan.htm", method = RequestMethod.GET)
     public String showPlan(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
         List<String> userJobs = JobService.getUserJobsList(userLogin);
         List<String> allJobs = JobService.getAllJobsList();
+        List<Profile> profiles = ProfileService.getAllProfiles();
+        Job job = new Job();
+        Profile profile = new Profile();
         model.addAttribute("userlogin", userLogin);
         model.addAttribute("userrole", userRole);
         model.addAttribute("userjobs", userJobs);
         model.addAttribute("alljobs", allJobs);
+        model.addAttribute("profiles", profiles);
+        model.addAttribute(job);
+        model.addAttribute(profile);
         return "plan";
         
+    }
+    
+    @RequestMapping(value = "/plan.htm", method = RequestMethod.POST)
+    public String onSubmit(@ModelAttribute("job") Job job, @ModelAttribute("profile") Profile profile) {
+        String s = profile.getName();
+        String splited[] = s.split("\\.");
+        JobService.addJob(job, Integer.parseInt(splited[0]));
+        return "redirect:plan.htm";
+    }
+    
+    @RequestMapping(value = "/plan/delete.htm", method = RequestMethod.POST)
+    public String onDelete(@ModelAttribute("job") Job job) {
+        //System.out.println(job.getIdJob());
+        JobService.deleteJob(job);
+        return "redirect:/plan.htm";
     }
     
 }
