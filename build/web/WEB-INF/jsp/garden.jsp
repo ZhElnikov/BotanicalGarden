@@ -71,7 +71,11 @@
                     </div>
                 </nav>
             </div>
-<div class="sectors">
+                            
+        <div class="row">
+                <div class="col-md-6 col-md-offset-1">                    
+                            
+           <div class="sectors">
              <div class="rect" id="rectangle1" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='limegreen';"><a href="">Сектор 1</a></div>             
              <div id="rectangle2" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='palegreen';"><a href="" >Сектор 2</a></div> 
              <div id="rectangle3" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='greenyellow';"><a href="" >Сектор 3</a></div>  
@@ -79,12 +83,18 @@
              <div id="rectangle5" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='darkolivegreen';"><a href="" >Сектор 5</a></div>  
              <div id="rectangle6" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='#9fdd7a';"><a href="" >Сектор 6</a></div>  
              <div id="rectangle7" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='#d3faa7';"><a href="" >Сектор 7</a></div>  
- </div>                           
+           </div> 
+                    
+                </div>
+            <div class="col-md-4">
+          <div>описание сектора</div> 
+                <textarea id="sectorDescription" name="sectorDescription" ></textarea>                  
                             
-                            
-                            
+            </div>                
 
         </div>
+        
+                            
         <div class="container" id="footer">
             <div id="footerImage"></div>
             <div id="footerText">&copy; Oak Botanical Garden 2018</div>
