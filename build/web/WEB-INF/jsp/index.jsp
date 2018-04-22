@@ -40,20 +40,8 @@
                         <div id="mainmenu">
                             <ul class="nav navbar-nav">
                                 
-                                <%
-                                    //ServletContext context = config.getServletContext();
-                                    //WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
-                                   // String roletest = context.getAttribute("userrole").toString();
-                                    Cookie cookies[] = request.getCookies();
-                                    System.out.println(cookies.length);
-                                    for (int i = 0; i < cookies.length; i++){
-                                        if (cookies[i].getName().equals("role")) {
-                                            System.out.println("!!! " + i);
-                                        }
-                                    }
-                                    
-                                    String role = "0"; //user // Role - userrole(String)
-
+                                <% 
+                                    String role = request.getAttribute("userrole").toString();
                                     ArrayList<String> pages = new ArrayList<String>();
                                     ArrayList<String> links = new ArrayList<String>();
                                     if (role.equals("1")) {
@@ -123,7 +111,6 @@
         <div class="container" id="footer">
             <div id="footerImage"></div>
             <div id="footerText">&copy; Oak Botanical Garden 2018</div>
-            <div id="footerText"><%=request.getAttribute("userrole")%></div>
         </div>
     </body>
 </HTML>>

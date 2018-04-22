@@ -45,9 +45,10 @@ public class AuthController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String onSubmit(@ModelAttribute("user") User user, HttpServletResponse response) {
-        if (AuthService.checkAuth(user) != -1){
+        int role = AuthService.checkAuth(user);
+        if (role != -1){
             response.addCookie(new Cookie("user", user.getLogin()));
-            response.addCookie(new Cookie("role", String.valueOf(user.getRole())));
+            response.addCookie(new Cookie("role", String.valueOf(role)));
             return "redirect:index.htm";
         }
         response.addCookie(new Cookie("user", "none"));
