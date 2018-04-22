@@ -38,18 +38,17 @@
 
                             <ul class="nav navbar-nav">
                                 <%
-                                    String role = "2";
+                                    String role = request.getAttribute("userrole").toString();
                                     ArrayList<String> pages = new ArrayList<String>();
                                     ArrayList<String> links = new ArrayList<String>();
-                                    if (role == "1") {
+                                    if (role.equals("1")) {
                                         pages.add("Профиль");
                                         links.add("index.htm");
                                         pages.add("График и план");
                                         links.add("plan.htm");
                                         pages.add("Заявка на покупку");
                                         links.add("order.htm");
-                                    }
-                                    if (role == "2") {
+                                    } else {
                                         pages.add("Профиль");
                                         links.add("index.htm");
                                         pages.add("График и план");
@@ -73,7 +72,7 @@
                 </nav>
             </div>
             <%
-                if (role == "1") {
+                if (role.equals("1")) {
             %>   
             <div class="row">         
                 <div class="col-md-4 col-md-offset-4 ">
@@ -92,7 +91,7 @@
 </div></div>
         <div class="row">      
             <%}
-            if (role=="2") {
+            if (role.equals("2")) {
 for(int i=0;i<5;i++) {
            %>       
                 <div class="col-md-4">            

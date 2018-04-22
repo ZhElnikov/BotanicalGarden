@@ -43,7 +43,7 @@
 
                             <ul class="nav navbar-nav">
                                 <%
-                                    String role = "1"; //user // Role - userrole(String)
+                                    String role = request.getAttribute("userrole").toString();
                                     ArrayList<String> pages = new ArrayList<String>();
                                     ArrayList<String> links = new ArrayList<String>();
                                     if (role.equals("1")) {
@@ -126,7 +126,7 @@
 
                             <div class="panel-body" id="<%=panelid%>">
                                 <div>
-                                    <textarea class="smallOrder2" id=<%=textareaid%> name="order" readonly></textarea>   
+                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%>  readonly></textarea>   
                                 </div>
                                 <input class="deleteBtn" type="submit" value="Удалить" id = <%=buttonid%> >
                             </div>

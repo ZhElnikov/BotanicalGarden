@@ -38,7 +38,7 @@
 
                             <ul class="nav navbar-nav">
                                 <%
-                                    String role = "2"; //user // Role - userrole(String)
+                                    String role = request.getAttribute("userrole").toString();
                                     ArrayList<String> pages = new ArrayList<String>();
                                     ArrayList<String> links = new ArrayList<String>();
                                     if (role.equals("1")) {
