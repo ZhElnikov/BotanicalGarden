@@ -87,19 +87,16 @@
                                 <div>Начало</div> 
                                 <input type="date" th:value="" id="startDate" name="startDate" class="planinput"> 
                             </div>
-                            <div class="col-md-4">
-                                <div>Окончание</div> 
-                                <input type="date" th:value="endDate" id="" name="endDate" class="planinput"> 
+                <div class="col-md-4">
+                                <div>Дедлайн</div> 
+                                <input type="date" th:value="" id="deadline" name="deadline" class="planinput">  
                             </div>
                         </div>
                         <div>Описание задачи</div> 
                         <textarea id="description" name="description" readonly></textarea>
                         <div class="row">         
-                            <div class="col-md-4">
-                                <div>Дедлайн</div> 
-                                <input type="date" th:value="" id="deadline" name="deadline" class="planinput">  
-                            </div>
-                            <div class="col-md-4">
+                            
+                            <div class="col-md-5">
                                 <div>Выбор работника</div> 
                                 <select id="choseWorker" name="choseWorker">
                                     <option>работник</option>
@@ -107,9 +104,11 @@
                                     <option>ослик</option>                                  
                                 </select>                        
                             </div>
+                            <div class="col-md-4">
+                            <input class="bigButton" id = "createBtn" type="submit" value="Создать"> 
                         </div>
-                        <input class="createBtn" id = "createBtn" type="submit" value="Создать"> 
-                    </div>
+ </div>
+                         </div>
                 </div>
             </form>  
 

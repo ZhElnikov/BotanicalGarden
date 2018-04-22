@@ -105,7 +105,6 @@ background-color:#d3faa7;
   height: 35px;
   border-radius: 40px;
   margin-top: 20px;
- 
   padding:5px;
   text-align: center;
   color: #000000;
@@ -118,6 +117,9 @@ background-color:#d3faa7;
   box-shadow:  #d3faa7;
   color: white;
   transform: translateY(-3px);
+}
+#createBtn{
+  margin-top: 10px;  
 }
 #loginFields{
   margin-top:20px;
@@ -167,6 +169,7 @@ margin-bottom:10px
 }
 .centerPos{
     text-align:center;
+    
 }
 #orderBtn{
 margin-left:30px;
