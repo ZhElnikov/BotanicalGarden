@@ -5,8 +5,12 @@
  */
 package model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.pojo.RequestTree;
+import model.pojo.Tree;
+import model.util.NewHibernateUtil;
+import org.hibernate.Session;
 
 /**
  *
@@ -20,6 +24,29 @@ public class RequestTreeDAO extends AbstractDAO{
         return list;
     }
     
+    public List<String> getAllNames(){
+        executeHQL("from RequestTree");
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++){
+            Tree tree =  (Tree) session.get(Tree.class, i + 1);
+            result.add(tree.getName()); 
+        }
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+    
+    public void changeStatus(int id, int stat){
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        RequestTree requestTree =  (RequestTree) session.get(RequestTree.class, id);
+        requestTree.setStatus(stat);
+        session.saveOrUpdate(requestTree);
+        session.getTransaction().commit();
+        session.close();
+    }
     
     public int amount(){
         getAllNotes();

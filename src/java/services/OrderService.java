@@ -27,6 +27,13 @@ public class OrderService {
         for (int i = 0; i < list.size(); i++){
             fertList.add( (RequestFert) list.get(i));
         }
+        for (int i = 0; i < fertList.size(); i++) {
+            RequestFert temp = (RequestFert) fertList.get(i);
+            if (temp.getStatus() != 0){
+                fertList.remove(i);
+                i--;
+            }
+        }
         return fertList;
     }
     
@@ -36,6 +43,25 @@ public class OrderService {
         for (int i = 0; i < list.size(); i++){
             treeList.add( (RequestTree) list.get(i));
         }
+        for (int i = 0; i < treeList.size(); i++) {
+            RequestTree temp = (RequestTree) treeList.get(i);
+            if (temp.getStatus() != 0){
+                treeList.remove(i);
+                i--;
+            }
+        }
         return treeList;
+    }
+    
+    static public List<String> getTreesNames(){
+        List<String> names = treedao.getAllNames();
+        return names;
+    }
+    
+    static public void changeStateTree(int id, int stat){
+        treedao.changeStatus(id, stat);
+    }
+    static public void changeStateFert(int id, int stat){
+        fertdao.changeStatus(id, stat);
     }
 }

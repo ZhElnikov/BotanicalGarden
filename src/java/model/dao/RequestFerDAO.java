@@ -7,6 +7,8 @@ package model.dao;
 
 import java.util.List;
 import model.pojo.RequestFert;
+import model.util.NewHibernateUtil;
+import org.hibernate.Session;
 
 /**
  *
@@ -20,6 +22,15 @@ public class RequestFerDAO extends AbstractDAO{
         return list;
     }
     
+    public void changeStatus(int id, int stat){
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        RequestFert requestFert =  (RequestFert) session.get(RequestFert.class, id);
+        requestFert.setStatus(stat);
+        session.saveOrUpdate(requestFert);
+        session.getTransaction().commit();
+        session.close();
+    }
     
     public int amount(){
         getAllNotes();
