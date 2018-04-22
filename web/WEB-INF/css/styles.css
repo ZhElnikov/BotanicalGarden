@@ -324,3 +324,19 @@ div.rect:hover{
     color: black;
 }
 
+
+.error-holder {
+    position: fixed;
+    top: 0;
+    left: 35%;
+    min-height: 14px;
+    width: 28%;
+    padding: 16px 1%;
+    display: table;
+    text-align: center;
+    cursor: pointer;
+    background-color: #e96161;
+    border-radius: 10px;
+    color: #ffffff; z-index: 999999; display: none;}
+
+.error-holder.error-holder-success {background-color: #35a63b;}
