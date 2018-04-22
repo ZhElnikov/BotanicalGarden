@@ -68,7 +68,13 @@ public class RequestFert  implements java.io.Serializable {
         this.body = body;
     }
 
-
+    public int getStatus() {
+        return this.status;
+    }
+    
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
 
 }

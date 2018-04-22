@@ -14,6 +14,7 @@ public class RequestTree  implements java.io.Serializable {
      private User user;
      private int quantity;
      private String body;
+     private int status;
 
     public RequestTree() {
     }
@@ -67,7 +68,13 @@ public class RequestTree  implements java.io.Serializable {
         this.body = body;
     }
 
-
+    public int getStatus() {
+        return this.status;
+    }
+    
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
 
 }
