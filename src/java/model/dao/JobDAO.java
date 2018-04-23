@@ -28,7 +28,7 @@ public class JobDAO extends AbstractDAO{
     public String getStringJob(int i){
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        this.job =  (Job) session.get(Job.class, i + 1);
+        this.job =  (Job) session.get(Job.class, i);
         String result = "Задание: " + this.job.getBody() + "\r\nРаботник: " + this.job.getUser().getProfile().getName() + " " + this.job.getUser().getProfile().getSurname() + "\r\nсрок - " + this.job.getDeadline();
         session.getTransaction().commit();
         session.close();

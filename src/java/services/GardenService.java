@@ -18,9 +18,7 @@ import model.pojo.Tree;
  */
 public class GardenService {
     
-    static SoilDAO soildao = new SoilDAO();
     static SectorDAO sectordao = new SectorDAO();
-    static TreeDAO treedao = new TreeDAO();
     
     static public String getStringInfo(int page){
         String result = new String();

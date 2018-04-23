@@ -1,3 +1,5 @@
+<%@page import="model.pojo.Tour"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -75,25 +77,25 @@
                     </div>
                 </nav>
             </div>
-            <form method="post" action="#" th:action="" th:object="" name="planForm">
+            <form method="post" th:action="@{/excursion.htm}" th:object="${tour}" action="excursion.htm" name="exAddForm">
                 <div class="row">         
                     <div class="col-md-7 col-md-offset-4">
                         <div class="row">         
                             <div class="col-md-4">
                                 <div>Начало</div> 
-                                <input type="date" th:value="" id="startDate" name="startDate" class="planinput"> 
+                                <input type="date" th:value="${tour.startDate}" id="startDate" name="startDate" class="planinput"> 
                             </div>
                             <div class="col-md-4">
                                 <div>Окончание</div> 
-                                <input type="date" th:value="endDate" id="" name="endDate" class="planinput"> 
+                                <input type="date" th:value="${tour.endDate}" id="endDate" name="endDate" class="planinput"> 
                             </div>
                         </div>
                         <div>Описание экскурсии</div> 
-                        <textarea id="description" name="description" ></textarea>
+                        <textarea id="body" name="body" ></textarea>
                         <div class="row">         
                             <div class="col-md-5">
                                 <div>Цена</div> 
-                                <input type="text" th:value="price" id="" name="price" class="planinput"> 
+                                <input type="text" th:value="${tour.price}" id="price" name="price" class="planinput"> 
                                 <span>BYN</SPAN>
                             </div>
                         </div>
@@ -104,16 +106,25 @@
 
 
             <div class="row"> 
-                <%for (int i = 0; i < 5; i++) {%>
-                <div class="col-md-4">            
+                <%
+                    List<Tour> tours = (List<Tour>) request.getAttribute("tours");
+                    for (int i = 0; i < tours.size(); i++) {
+                        Tour tour = tours.get(i);
+                        String body = "Тур: " + tour.getBody() + "\r\nс: " + tour.getStartDate() + " по: " + tour.getEndDate();
+                %>
+                <div class="col-md-4">  
+                    <form method="post" th:action="@{/excursion/delete.htm}" th:object="${tour}" action="excursion/delete.htm" name="excursionForm">
                     <div class="panel panel-default">
                         <div class="panel-body">
+                            <input type="hidden" th:value="${tour.idTour}" id="idTour" name="idTour" value="<%=tour.getIdTour()%>"  >
                             <div>
-                                <textarea id="smallOrder2" name="order" ></textarea>   
+                                <textarea id="body" name="body" ><%=body%></textarea>   
                             </div>
+                            <input type="text" th:value="${tour.price}" id="price" name="price" value="<%=tour.getPrice()%>" readonly>
                             <input class="declineBtn" id = "deleteBtn" type="submit" value="Удалить">
                         </div>
-                    </div>        
+                    </div>   
+                    </form>
                 </div>
                 <%}%>
             </div>

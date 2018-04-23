@@ -84,11 +84,11 @@
                         <div class="row">         
                             <div class="col-md-4">
                                 <div>Начало</div>
-                                <input type="text" th:value="${job.startDate}" id="startDate" name="startDate" class="planinput" > 
+                                <input type="date" th:value="${job.startDate}" id="startDate" name="startDate" class="planinput" > 
                             </div>
                 <div class="col-md-4">
                                 <div>Дедлайн</div>
-                                <input type="text" th:value="${job.deadline}" id="deadline" name="deadline" class="planinput" > 
+                                <input type="date" th:value="${job.deadline}" id="deadline" name="deadline" class="planinput" > 
                             </div>
                         </div>
                         <div>Описание задачи</div> 
@@ -121,7 +121,9 @@
             <div class="row"> 
                 <%
                     List<String> allJobs = (List<String>) request.getAttribute("alljobs");
-                    for (int i = 0; i < allJobs.size(); i++) {
+                    List<Job> jobs = (List<Job>) request.getAttribute("jobs");
+                    for (int i = 0; i < allJobs.size() && i < jobs.size(); i++) {
+                        Job job = jobs.get(i);
                         String textareaid = "textareaid" + String.valueOf(i);
                         String panelid = "panelid" + String.valueOf(i);
                         String buttonid = "buttonid" + String.valueOf(i);
@@ -130,7 +132,7 @@
                     <div class="col-md-4">  
                         <form method="post" th:action="@{/plan/delete.htm}" th:object="${job}" action="plan/delete.htm" name="planForm">
                         <div class="panel panel-default">
-                            <input type="hidden" th:value="${job.idJob}" id="idJob" name="idJob" value="<%=i+1%>"  > 
+                            <input type="hidden" th:value="${job.idJob}" id="idJob" name="idJob" value="<%=job.getIdJob()%>"  > 
                             <div class="panel-body" id="<%=panelid%>">
                                 <div>
                                     <textarea class="smallOrder2" name="order" id=<%=textareaid%>  readonly><%=allJobs.get(i)%></textarea>   

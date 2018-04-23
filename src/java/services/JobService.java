@@ -34,13 +34,23 @@ public class JobService {
         return result;
     }
     
-    static public List<String> getAllJobsList(){
+    static public List<String> getAllJobsListString(){
         int amount  = dao.amount();
         List<String> result = new ArrayList<>();
         String nres;
+        List<Job> jobs = getAllJobsList();
         for (int i = 0; i < amount; i++){
-            nres = dao.getStringJob(i);
+            nres = dao.getStringJob(jobs.get(i).getIdJob());
             result.add(nres);
+        }
+        return result; 
+    }
+    static public List<Job> getAllJobsList(){
+        int amount  = dao.amount();
+        List<Object> list = dao.getAllNotes();
+        List<Job> result = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++){
+            result.add((Job)list.get(i));
         }
         return result; 
     }
@@ -55,7 +65,7 @@ public class JobService {
             result.add(temp);
         }
         return result;   
-    }
+    } 
     
     static public List<Object> getUserJobs(User user){
         List<Object> jobs = dao.getJobsForUser(user.getIdUser());
@@ -78,7 +88,7 @@ public class JobService {
     }
     
     static public void completeJob(Job job){
-        String endDate = new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTime());
+        String endDate = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
         dao.complete(job.getIdJob(), endDate);
     }
 }

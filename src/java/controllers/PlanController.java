@@ -32,7 +32,8 @@ public class PlanController {
     @RequestMapping(value = "/plan.htm", method = RequestMethod.GET)
     public String showPlan(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
         List<Job> userJobs = JobService.getUserJobsList(userLogin);
-        List<String> allJobs = JobService.getAllJobsList();
+        List<String> allJobs = JobService.getAllJobsListString();
+        List<Job> jobs = JobService.getAllJobsList();
         List<Profile> profiles = ProfileService.getAllProfiles();
         Job job = new Job();
         Profile profile = new Profile();
@@ -40,6 +41,7 @@ public class PlanController {
         model.addAttribute("userrole", userRole);
         model.addAttribute("userjobs", userJobs);
         model.addAttribute("alljobs", allJobs);
+        model.addAttribute("jobs", jobs);
         model.addAttribute("profiles", profiles);
         model.addAttribute(job);
         model.addAttribute(profile);
