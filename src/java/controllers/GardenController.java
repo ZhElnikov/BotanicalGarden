@@ -42,22 +42,11 @@ public class GardenController {
     
     @RequestMapping(value = {"/garden/{key}.htm"}, method = RequestMethod.GET)
     public String showConcreteGarden(ModelMap model, @ModelAttribute("attrs") Attributes attrs, HttpServletRequest request) {
-        /*String button = attrs.getStatus();
-        String splited[] = button.split(" ");
-        int page = Integer.parseInt(splited[1]);
-        String sectorinfo = GardenService.getStringInfo(page);
-        this.info = sectorinfo;
-        System.out.println(info);*/
         String parts[] = request.getRequestURL().toString().split("/");
         String last2[] = parts[parts.length - 1].split("\\.");
         int page = Integer.parseInt(last2[0]);
         String sectorinfo = GardenService.getStringInfo(page);
         this.info = sectorinfo;
-        //model.addAttribute("info", info);
-        //response.addCookie(new Cookie("info", URLEncoder.encode(info, "UTF-8")));
-        //ModelAndView mav = new ModelAndView();
-        //mav.setViewName("/result.htm");
-        //return mav;
 
         return "redirect:/garden.htm"; 
         
