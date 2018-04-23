@@ -367,3 +367,8 @@ div.rect:hover{
     left: 0;
     color: #ffffff;
 }
+.hint{ 
+position: absolute; 
+border:1px solid black; 
+visibility: visible; 
+}

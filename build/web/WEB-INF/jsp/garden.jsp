@@ -73,19 +73,22 @@
             </div>
                             
         <div class="row">
-                <div class="col-md-6 col-md-offset-1">                    
+                <div class="col-md-6">                    
      
            <div class="sectors">
-             <div class="rect" id="rectangle1" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='limegreen';"><a href="garden/1.htm">Сектор 1</a></div>             
-             <div id="rectangle2" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='palegreen';"><a href="garden/2.htm" >Сектор 2</a></div> 
-             <div id="rectangle3" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='greenyellow';"><a href="garden/3.htm" >Сектор 3</a></div>  
-             <div id="rectangle4" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='green';"><a href="garden/4.htm" >Сектор 4</a></div>  
-             <div id="rectangle5" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='darkolivegreen';"><a href="garden/5.htm" >Сектор 5</a></div>  
-             <div id="rectangle6" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='#9fdd7a';"><a href="garden/6.htm" >Сектор 6</a></div>  
-             <div id="rectangle7" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='#d3faa7';"><a href="garden/7.htm" >Сектор 7</a></div>  
+             <div class="rect" id="rectangle1" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='limegreen';"><a href="garden/1.htm" class="linktree" id="linktree-1">Сектор 1</a></div>             
+             <div id="rectangle2" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='palegreen';"><a href="garden/2.htm" class="linktree" id="linktree-2">Сектор 2</a></div> 
+             <div id="rectangle3" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='greenyellow';"><a href="garden/3.htm" class="linktree" id="linktree-3">Сектор 3</a></div>  
+             <div id="rectangle4" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='green';"><a href="garden/4.htm" class="linktree" id="linktree-4">Сектор 4</a></div>  
+             <div id="rectangle5" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='darkolivegreen';"><a href="garden/5.htm" class="linktree" id="linktree-5" >Сектор 5</a></div>  
+             <div id="rectangle6" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='#9fdd7a';"><a href="garden/6.htm" class="linktree" id="linktree-6">Сектор 6</a></div>  
+             <div id="rectangle7" class="rect" onmouseover="this.style.backgroundColor='forestgreen';" onmouseout="this.style.backgroundColor='#d3faa7';"><a href="garden/7.htm" class="linktree" id="linktree-7">Сектор 7</a></div>  
            </div> 
                 
                 </div>
+            <div class="col-md-2">
+           <div>Фото</div> 
+                <img src="tree0.png" height='250' width="190" class='hint'/></div>
             <div class="col-md-4">
           <div>описание сектора</div> 
                 <textarea id="sectorDescription" name="sectorDescription" >${info}</textarea>                  
