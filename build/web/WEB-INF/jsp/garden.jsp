@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+
 <HTML>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -9,6 +10,7 @@
         <style><%@include file="/WEB-INF/css/styles.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>        
         <script> <%@include file="/WEB-INF/js/main.js"%></script>
+        <script> <%@include file="/WEB-INF/js/report.js"%></script>
     </head>
 
     <body>
@@ -96,12 +98,27 @@
             </div>                
 
         </div>
-        
-         </div>    
+         <div class="reportCenter">       
+         <input class="reportBtn" id = "reportBtn" type="submit" value="Сформировать график">
+         </div>
+         <div class="row">           
+            <div class="col-md-6 col-md-offset-3"> 
+                <canvas id="canvas" width= "550" height="375"></canvas>
+            </div>
+        </div> 
+         </div>  
+                
+                
+                
         <div class="scrolltop"></div>
+        
+        
+        
         <div class="container" id="footer">
             <div id="footerImage"></div>
             <div id="footerText">&copy; Oak Botanical Garden 2018</div>
         </div>
+          
+        
     </body>
 </HTML>
