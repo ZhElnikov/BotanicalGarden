@@ -31,6 +31,9 @@ public class ExcursionController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String showExcursion(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        if (userRole.equals("1")){
+            return "redirect:/index.htm";
+        }
         List<Tour> tours = ExcursionService.getAllToursList();
         Tour tour = new Tour();
         model.addAttribute("userlogin", userLogin);

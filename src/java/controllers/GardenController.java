@@ -32,6 +32,9 @@ public class GardenController {
     
     @RequestMapping(value = "/garden.htm", method = RequestMethod.GET)
     public String showGarden(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        if (userRole.equals("1")){
+            return "redirect:/index.htm";
+        }
         Attributes attrs = new Attributes();
         model.addAttribute("userlogin", userLogin);
         model.addAttribute("userrole", userRole);
