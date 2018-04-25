@@ -41,4 +41,8 @@ public class ProfileService {
         return profList;
     }
     
+    static public void deleteProfile(int id){
+        dao.delete(id);
+    }
+    
 }

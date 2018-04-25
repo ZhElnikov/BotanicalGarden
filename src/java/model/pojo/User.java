@@ -17,7 +17,7 @@ public class User  implements java.io.Serializable {
      private String login;
      private String password;
      private String EMail;
-     private Date regDate;
+     private String regDate;
      private Set reports = new HashSet(0);
      private Set requestFerts = new HashSet(0);
      private Profile profile;
@@ -28,14 +28,14 @@ public class User  implements java.io.Serializable {
     }
 
 	
-    public User(int role, String login, String password, String EMail, Date regDate) {
+    public User(int role, String login, String password, String EMail, String regDate) {
         this.role = role;
         this.login = login;
         this.password = password;
         this.EMail = EMail;
         this.regDate = regDate;
     }
-    public User(int role, String login, String password, String EMail, Date regDate, Set reports, Set requestFerts, Profile profile, Set requestTrees, Set jobs) {
+    public User(int role, String login, String password, String EMail, String regDate, Set reports, Set requestFerts, Profile profile, Set requestTrees, Set jobs) {
        this.role = role;
        this.login = login;
        this.password = password;
@@ -83,11 +83,11 @@ public class User  implements java.io.Serializable {
     public void setEMail(String EMail) {
         this.EMail = EMail;
     }
-    public Date getRegDate() {
+    public String getRegDate() {
         return this.regDate;
     }
     
-    public void setRegDate(Date regDate) {
+    public void setRegDate(String regDate) {
         this.regDate = regDate;
     }
     public Set getReports() {

@@ -45,6 +45,7 @@ public class JobService {
         }
         return result; 
     }
+    
     static public List<Job> getAllJobsList(){
         int amount  = dao.amount();
         List<Object> list = dao.getAllNotes();

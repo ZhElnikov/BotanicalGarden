@@ -1,4 +1,7 @@
 
+<%@page import="model.pojo.User"%>
+<%@page import="model.pojo.Profile"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -93,13 +96,13 @@
                     <div>Логин</div>
                     <input class="profile" type="text" id="login" name="login" value="${userlogin}" readonly> 
                     <div>Имя</div>
-                    <input class="profile" type="text" id="name" name="name" value="${profile.getName()}" readonly> 
+                    <input class="profile" type="text" id="name" name="name" value="${myprofile.getName()}" readonly> 
                     <div>Фамилия</div>
-                    <input class="profile" type="text" id="surname" name="surname" value="${profile.getSurname()}" readonly> 
+                    <input class="profile" type="text" id="surname" name="surname" value="${myprofile.getSurname()}" readonly> 
                     <div>Должность</div>
-                    <input class="profile" type="text" id="position" name="position" value="${profile.getSpecialization()}" readonly> 
+                    <input class="profile" type="text" id="position" name="position" value="${myprofile.getSpecialization()}" readonly> 
                     <div>Характеристика</div>
-                    <textarea id="characterstic" name="characterstic" readonly>${profile.getAbout()} </textarea>  </div>  
+                    <textarea id="characterstic" name="characterstic" readonly>${myprofile.getAbout()} </textarea>  </div>  
                 <div class="col-md-3">
                     <span>Задания</span>
                     <textarea id="tasks" name="tasks" >${jobs}</textarea>
@@ -110,41 +113,41 @@
                 if (role.equals("2")) {
             %>
             <h3>Создать профиль</h3>
-            <form method="post" th:action="" th:object="" action=""  name="createProfileForm">
+            <form method="post" th:action="@{/index/add.htm}" action="index/add.htm"  th:object="${profile}" th:object="${user}" name="createProfileForm">
                 <div class="row">         
                     <div class="col-md-3 col-md-offset-1 ">
                         <span>Логин</span>
                         <span class="errorMsg" id="symbol-login">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-login">Длина 1-45 символов!</span>
-                        <input class="createProfile login" type="text" id="createlogin" name="" value="" >    
+                        <input class="createProfile login" type="text" id="login" th:value="${user.login}" name="login" value="" >    
                         <span>Пароль</span>
                         <span class="errorMsg" id="symbol-password">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-password">Длина 1-45 символов!!</span>
-                        <input class="createProfile" type="text" id="createpassword" name="" value="" >    
+                        <input class="createProfile" type="text" id="password" th:value="${user.password}" name="password" value="" >    
 
                         <span>e-mail</span>
                         <span class="errorMsg" id="symbol-mail">Некорректно указан адрес!</span>
                         <span class="errorMsg" id="length-mail">Длина 1-45 символов!!</span>
-                        <input class="createProfile" type="text" id="createmail" name="" value="" >    
+                        <input class="createProfile" type="text" id="EMail" th:value="${user.EMail}" name="EMail" value="" >    
 
                         <span>Должность</span>
                         <span class="errorMsg" id="symbol-position">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-position">Длина 1-45 символов!!</span>
-                        <input class="createProfile" type="text" id="createposition" name="" value="" >    
+                        <input class="createProfile" type="text" id="specialization" th:value="${profile.specialization}" name="specialization" value="" >    
                     </div>
                     <div class="col-md-3 ">
                         <span>Имя</span>
                         <span class="errorMsg" id="symbol-name">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-name">Длина 1-45 символов!</span>
-                        <input class="createProfile" type="text" id="createname" name="" value="" >    
+                        <input class="createProfile" type="text" id="name" th:value="${profile.name}" name="name" value="" >    
                         <span>Фамилия</span>
                         <span class="errorMsg" id="symbol-surname">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-surname">Длина 1-45 символов!!</span>
-                        <input class="createProfile" type="text" id="createsurname" name="" value="" >    
+                        <input class="createProfile" type="text" id="surname" th:value="${profile.surname}" name="surname" value="" >    
                         <span>Роль</span>
-                        <select th:value="" id="" name="" class="createProfile">
-                            <option>работник</option>
-                            <option>менеджер</option>
+                        <select th:value="${user.role}" id="role" name="role" class="createProfile">
+                            <option>1</option>
+                            <option>2</option>
                         </select> 
                     </div>   
 
@@ -152,42 +155,51 @@
                         <span>Характеристика</span>
                         <span class="errorMsg" id="symbol-about">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-about">Длина от 1 до 255 символов!</span>
-                        <textarea id="createabout" name="" class="createArea"></textarea>
+                        <textarea id="about" name="about" class="createArea"></textarea>
                     </div> 
-                </div>        
+                </div>    
+                <input class="createProfileBtn" id ="createProfileBtn" type="submit" value="Создать"> 
             </form>
-            <input class="createProfileBtn" id ="createProfileBtn" type="submit" value="Создать">   
+              
             
             <h3>Все профили</h3>
             <div class="row">
-                <%for (int i =0;i<5;i++) {
+                <%
+                    List<Profile> proflist = (List<Profile>) request.getAttribute("proflist");
+                    List<User> userlist = (List<User>) request.getAttribute("userlist");
+                    String userlogin = (String) request.getAttribute("userlogin");
+                    for (int i =0; i<proflist.size() && i<userlist.size(); i++) {
+                        Profile tempP = proflist.get(i);
+                        User tempU = userlist.get(i);
+                        if (!tempU.getLogin().equals(userlogin)){
                 %>                
                 <div class="col-md-4"> 
-                    <form method="post" th:action="" th:object="" action=""  name="profileForm">
+                    <form method="post" th:action="@{/index/delete.htm}" action="index/delete.htm" th:object="${user}" name="profileForm">
                         <div class="panel panel-default">                          
                          <div class="panel-body" id="">
+                             <input type="hidden" th:value="${user.idUser}" id="idUser" name="idUser" value="<%=tempU.getIdUser()%>"  >
                         <div>Логин</div>
-                        <input class="createProfile-l" type="text" id="logfield" name="" value="">   
+                        <input class="createProfile" type="text" id="logfield" name="" value="<%=tempU.getLogin()%>" readonly>   
                         <div>Пароль</div>
-                        <input class="createProfile" type="text" id="" name="" value="" >    
+                        <input class="createProfile" type="text" id="" name="" value="<%=tempU.getPassword()%>" readonly>    
                         <div>e-mail</div>
-                        <input class="createProfile" type="text" id="" name="" value="" >    
+                        <input class="createProfile" type="text" id="" name="" value="<%=tempU.getEMail()%>" readonly>    
                         <div>Должность</div>
-                        <input class="createProfile" type="text" id="" name="" value="" >    
+                        <input class="createProfile" type="text" id="" name="" value="<%=tempP.getSpecialization()%>" readonly>    
                          <div>Имя</div>
-                        <input class="createProfile" type="text" id="" name="" value="" >    
+                        <input class="createProfile" type="text" id="" name="" value="<%=tempP.getName()%>" readonly>    
                         <div>Фамилия</div>
-                        <input class="createProfile" type="text" id="" name="" value="" >    
+                        <input class="createProfile" type="text" id="" name="" value="<%=tempP.getSurname()%>" readonly>    
                         <div>Роль</div>     
-                        <input class="createProfile" type="text" id="" name="" value="" >
+                        <input class="createProfile" type="text" id="" name="" value="<%=tempU.getRole()%>" readonly>
                         <div>Характеристика</div>     
-                        <input class="createProfile" type="text" id="" name="" value="" >    
+                        <input class="createProfile" type="text" id="" name="" value="<%=tempP.getAbout()%>" readonly>    
                         <input class="deleteBtn" type="submit" value="Удалить" id = "">
                             </div>
                         </div>  
                     </form>
                 </div>
-                <%}%>
+                <%}}%>
             </div>
             <%}%>
             <div class="scrolltop"></div>

@@ -20,8 +20,8 @@
         <property name="EMail" type="string">
             <column name="`e-mail`" length="45" not-null="true" />
         </property>
-        <property name="regDate" type="timestamp">
-            <column name="reg_date" length="19" not-null="true" />
+        <property name="regDate" type="string">
+            <column name="reg_date" length="45" not-null="true" />
         </property>
         <set name="reports" table="report" inverse="true" lazy="true" fetch="select">
             <key>
