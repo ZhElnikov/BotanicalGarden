@@ -1,4 +1,6 @@
 $(document).ready(function(){
+console.log(document.cookie);
+
 
 var response1 = document.cookie;
 if((response1).indexOf("error")!==-1 && (response1).indexOf("-1")!==-1){
