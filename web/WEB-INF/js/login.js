@@ -1,24 +1,26 @@
 $(document).ready(function(){
 
 var response1 = document.cookie;
-if((response1).indexOf("error")!==-1){
+if((response1).indexOf("error")!==-1 && (response1).indexOf("-1")!==-1){
    showError("invalid data! ",50);
    //showError("0 |_|_| |/| 6 K A",50);
    deleteCookie("errorCookie");
  }
     $('.bigButton').on("click", function(){
     var response = document.cookie;
-    if(response.indexOf("none")!==-1){
-    setCookie("errorCookie", "error");    
+    if(response.indexOf("-1")!==-1){
+    setCookie("errorCookie", "error");   
+    //console.log(document.cookie);
 }
+});
  });   
     
     //console.log(document.cookie);
-});
+
 function deleteCookie(name) {
   setCookie(name, "", {
     expires: -1
-  })
+  });
 }
 function setCookie(name, value, options) {
   options = options || {};
