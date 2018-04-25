@@ -41,7 +41,7 @@ public class UserDAO extends AbstractDAO{
         return this.user;
     }
     
-    public void addwithProfile(User user, Profile profile) throws ParseException{
+    public void addwithProfile(User user, Profile profile){
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         String string = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());

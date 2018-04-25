@@ -23,9 +23,10 @@ public class AuthService {
     
     static public int checkAuth(User user){
         int size = dao.amount();
+        List<Object> list = dao.getAllNotes();
         User temp;
-        for (int i = 1; i <= dao.amount(); i++){
-            temp = dao.getUser(i);
+        for (int i = 0; i < list.size(); i++){
+            temp = (User) list.get(i);
             if(user.getLogin().equals(temp.getLogin()) && user.getPassword().equals(temp.getPassword())){
                 return temp.getRole();
             }
