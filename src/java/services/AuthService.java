@@ -5,8 +5,11 @@
  */
 package services;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.pojo.User;
 import model.dao.UserDAO;
+import model.pojo.Profile;
 /**
  *
  * @author 7853j
@@ -30,4 +33,20 @@ public class AuthService {
         return -1; 
     }
     
+    static public List<User> getAllUsers(){
+        List<User> userlist = new ArrayList<User>();
+        List<Object> list = dao.getAllNotes();
+        for (int i = 0; i < list.size(); i++){
+            userlist.add( (User) list.get(i));
+        }
+        return userlist;
+    }
+    
+    static public void addUserWithProfile(User user, Profile profile){
+        dao.addwithProfile(user, profile);
+    }
+    
+    static public void deleteUser(int id){
+        dao.delete(id);
+    }
 }
