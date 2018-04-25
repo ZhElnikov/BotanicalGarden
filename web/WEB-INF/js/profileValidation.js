@@ -91,6 +91,8 @@ $(document).ready(function(){
             $("#length-about").css("display","none");
             $("#symbol-about").css("display","none");
         }  
+        
+      deleteCookie("valid");   
    
     $('.createProfileBtn').on("click", function(){    
     var filterUsername  = /^([a-zA-Z0-9_\-])+$/;
@@ -106,103 +108,91 @@ $(document).ready(function(){
     var surname = $("#createsurname").val();
     var about = $("#createabout").val();
     
+    var loginValid;
+    var passwordValid;
+    var mailValid;
+    var positionValid;
+    var nameValid;
+    var surnameValid;
+    var aboutValid;  
     
     if (login == '' || login.length>45){
-            //$("#length-login").css("display","inline-block");
-            //$("#symbol-login").css("display","none");
+            loginValid=false;
             setCookie("length-login", "1");
         }  else if (!filterUsername.test(login)){
-            //$("#symbol-login").css("display","inline-block");
-            //$("#length-login").css("display","none");
+            loginValid=false;
            setCookie("symbol-login", "1");
         } else  {
-            //$("#length-login").css("display","none");
-            //$("#symbol-login").css("display","none");
+            loginValid=true;
         } 
         
     if (password == '' || password.length>45){
-            //$("#length-password").css("display","inline-block");
-            //$("#symbol-password").css("display","none");
+            passwordValid=false;
             setCookie("length-password", "1");
         }  else if (!filterPassword.test(password)){
-            //$("#symbol-password").css("display","inline-block");
-           // $("#length-password").css("display","none");
+           passwordValid=false;
             setCookie("symbol-password", "1");
         } else  {
-            //$("#length-password").css("display","none");
-            //$("#symbol-password").css("display","none");
-            //createCookie=false;
+            passwordValid=true;
         }  
         
     if (mail == '' || mail.length>45){
-            //$("#length-mail").css("display","inline-block");
-            //$("#symbol-mail").css("display","none");
+            mailValid=false;
             setCookie("length-mail", "1");
         }  else if (!filterMail.test(mail)){
-            //$("#symbol-mail").css("display","inline-block");
-            //$("#length-mail").css("display","none");
+           mailValid=false;
             setCookie("symbol-mail", "1");
         } else  {
-            //$("#length-mail").css("display","none");
-            //$("#symbol-mail").css("display","none");
-            //createCookie=false;
+            mailValid=true;
         }   
         
     if (position == '' || position.length>45){
-            //$("#length-position").css("display","inline-block");
-            //$("#symbol-position").css("display","none");
+            positionValid=false;
             setCookie("length-position", "1");
         }  else if (filter.test(position)){
-            //$("#symbol-position").css("display","inline-block");
-           // $("#length-position").css("display","none");
+            positionValid=false;
             setCookie("symbol-position", "1");
         } else  {
-            //$("#length-position").css("display","none");
-           // $("#symbol-position").css("display","none");
-            //createCookie=false;
+            positionValid=true;
         }    
     
     if (name == '' || name.length>45){
-            //$("#length-name").css("display","inline-block");
-            //$("#symbol-name").css("display","none");
+             nameValid=false;
             setCookie("length-name", "1");
         }  else if (filter.test(name)){
-            //$("#symbol-name").css("display","inline-block");
-            //$("#length-name").css("display","none");
+            nameValid=false;
             setCookie("symbol-name", "1");
         } else  {
-            //$("#length-name").css("display","none");
-            //$("#symbol-name").css("display","none");
-           // createCookie=false;
+            nameValid=true;
         }
         
     if (surname == '' || surname.length>45){
-           // $("#length-surname").css("display","inline-block");
-            //$("#symbol-surname").css("display","none");
+           surnameValid=false;
             setCookie("length-surname", "1");
         }  else if (filter.test(surname)){
-            //$("#symbol-surname").css("display","inline-block");
-            //$("#length-surname").css("display","none");
+           surnameValid=false;
            setCookie("symbol-surname", "1");
         } else  {
-           // $("#length-surname").css("display","none");
-            //$("#symbol-surname").css("display","none");
-            //createCookie=false;
+           surnameValid=true;
         }
         
     if (about === '' || about.length>255){
-            //$("#length-about").css("display","inline-block");
-            //$("#symbol-about").css("display","none");
+            aboutValid=false;
             setCookie("length-about", "1");
         }  else if (filter.test(about)){
-            //$("#symbol-about").css("display","inline-block");
-            //$("#length-about").css("display","none");
+           aboutValid=false;
            setCookie("symbol-about", "1");
         } else  {
-            //$("#length-about").css("display","none");
-            //$("#symbol-about").css("display","none");
-            //createCookie=false;
-        }     
+           aboutValid=true;
+        }
+        
+        if( loginValid && passwordValid && mailValid && positionValid && nameValid && surnameValid && aboutValid)
+        setCookie("valid", "true");
+        else 
+        setCookie("valid", "false");
+    
+    console.log(document.cookie);
+        
     });
  });   
     
