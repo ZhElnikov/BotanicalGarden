@@ -13,6 +13,7 @@
         <style><%@include file="/WEB-INF/css/styles.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>        
         <script> <%@include file="/WEB-INF/js/main.js"%></script>
+        <script> <%@include file="/WEB-INF/js/planValidation.js"%></script>
 
     </head>
 
@@ -83,16 +84,24 @@
                     <div class="col-md-7 col-md-offset-4">
                         <div class="row">         
                             <div class="col-md-4">
-                                <div>Начало</div>
+                                <span>Начало</span>
+                                <span class="errorMsg" id="start-empty">Не выбрана!</span>
                                 <input type="date" th:value="${job.startDate}" id="startDate" name="startDate" class="planinput" > 
                             </div>
-                <div class="col-md-4">
-                                <div>Дедлайн</div>
+                <div class="col-md-5">
+                                <span>Дедлайн</span>
+                                <span class="errorMsg" id="end-empty">Не выбрана!</span>
+                                <span class="errorMsg" id="end-today">Не раньше сегодня!</span>
+                                <span class="errorMsg" id="wrong-interval">Не раньше начала!</span>
                                 <input type="date" th:value="${job.deadline}" id="deadline" name="deadline" class="planinput" > 
                             </div>
                         </div>
-                        <div>Описание задачи</div> 
+                        <span>Описание задачи</span> 
+                        <span class="errorMsg" id="length-area">Длина от 1 до 255 символов!</span>
+                        <span class="errorMsg" id="symbol-area">Недопустимые символы!</span>
+                        <div>
                         <textarea id="body" name="body"></textarea>
+                        </div>
                         <div class="row">         
                             
                             <div class="col-md-5">
