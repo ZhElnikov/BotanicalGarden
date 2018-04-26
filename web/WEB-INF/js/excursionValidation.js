@@ -113,9 +113,9 @@ $(document).ready(function(){
         }      
        
     if( areaValid && endValid && startValid&& priceValid)
-        setCookie("valid", "true");
+        setCookie("valid", "1");
         else 
-        setCookie("valid", "false");
+        setCookie("valid", "0");
     console.log(document.cookie);
         
     });
