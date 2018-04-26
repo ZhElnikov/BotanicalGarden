@@ -60,7 +60,10 @@ public class OrderController {
     }
     
     @RequestMapping(value = "/order/add.htm", method = RequestMethod.POST)
-    public String onAdd(@ModelAttribute("attrs") Attributes attrs, HttpServletResponse response) {
+    public String onAdd(@ModelAttribute("attrs") Attributes attrs, HttpServletResponse response, @CookieValue(value = "valid", defaultValue = "false") String valid) {
+        if (valid.equals("false")){
+            return "redirect:/order.htm";
+        }
         String body = attrs.getBody();
         String name = attrs.getName();
         String user = attrs.getUser();

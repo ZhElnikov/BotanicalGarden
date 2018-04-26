@@ -79,7 +79,7 @@
                 </nav>
             </div>
                             <h3>Создание экскурсии</h3>
-            <form method="post" th:action="@{/excursion.htm}" th:object="${tour}" action="excursion.htm" name="exAddForm">
+            <form method="post" th:action="@{/excursion/add.htm}" th:object="${tour}" action="excursion/add.htm" name="exAddForm">
                 <div class="row">         
                     <div class="col-md-7 col-md-offset-4">
                         <div class="row">         

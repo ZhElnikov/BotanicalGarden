@@ -28,10 +28,6 @@
         <error-code>404</error-code>
         <location>/login.htm</location>
     </error-page>
-    <error-page>
-        <error-code>405</error-code>
-        <location>/login.htm</location>
-    </error-page>
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

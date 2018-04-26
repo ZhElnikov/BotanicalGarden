@@ -50,7 +50,10 @@ public class PlanController {
     }
     
     @RequestMapping(value = "/plan.htm", method = RequestMethod.POST)
-    public String onSubmit(@ModelAttribute("job") Job job, @ModelAttribute("profile") Profile profile) {
+    public String onSubmit(@ModelAttribute("job") Job job, @ModelAttribute("profile") Profile profile, @CookieValue(value = "valid", defaultValue = "false") String valid) {
+        if (valid.equals("false")){
+            return "redirect:/plan.htm";
+        }
         String s = profile.getName();
         String splited[] = s.split("\\.");
         JobService.addJob(job, Integer.parseInt(splited[0]));

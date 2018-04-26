@@ -57,7 +57,10 @@ public class MyIndexController {
     }
     
     @RequestMapping(value = "/index/add.htm", method = RequestMethod.POST)
-    public String onAdd(@ModelAttribute("user") User user, @ModelAttribute("profile") Profile profile) { 
+    public String onAdd(@ModelAttribute("user") User user, @ModelAttribute("profile") Profile profile, @CookieValue(value = "valid", defaultValue = "false") String valid) { 
+        if (valid.equals("false")){
+            return "redirect:/index.htm";
+        }
         AuthService.addUserWithProfile(user, profile);
         return "redirect:/index.htm";
     }
