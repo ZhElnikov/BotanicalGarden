@@ -29,6 +29,9 @@ public class OrderController {
     
     @RequestMapping(value = "/order.htm", method = RequestMethod.GET)
     public String showOrder(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        if (userRole.equals("-1")){
+            return "redirect:/loginPage.htm";
+        }
         List<RequestFert> fertList = OrderService.getFerts();
         List<RequestTree> treeList = OrderService.getTrees();
         List<String> treeNames = OrderService.getTreesNames();

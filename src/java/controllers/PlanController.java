@@ -31,6 +31,9 @@ public class PlanController {
     
     @RequestMapping(value = "/plan.htm", method = RequestMethod.GET)
     public String showPlan(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        if (userRole.equals("-1")){
+            return "redirect:/loginPage.htm";
+        }
         List<Job> userJobs = JobService.getUserJobsList(userLogin);
         List<String> allJobs = JobService.getAllJobsListString();
         List<Job> jobs = JobService.getAllJobsList();

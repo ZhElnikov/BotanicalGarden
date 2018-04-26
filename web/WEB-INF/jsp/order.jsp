@@ -121,7 +121,7 @@
                             <option>Ива</option>
                         </select> 
                         <span>Количество</span> 
-                        <span class="errorMsg" id="length-amount">Длина от 1 до 255 символов!</span>
+                        <span class="errorMsg" id="length-amount">Длина больше 0!</span>
                         <span class="errorMsg" id="symbol-amount">кол-во-положительное число!</span>
                         <div>
                         <input type="text" th:value="${attr.q}" id="q" name="q">
