@@ -10,10 +10,13 @@ $(window).load(function(){
             scrollTop: 0
         }, timeToScroll);
     });
+    
     var pictToSet;
     var response = document.cookie;
+    console.log(document.cookie);
     if(response.indexOf("tree")!==-1){
-    pictToSet = (response.slice(23,32));
+    pictToSet = (response.slice(response.indexOf("tree"),response.indexOf("tree")+9));
+    console.log(pictToSet);
     deleteCookie("src");
     } 
     else {
@@ -41,7 +44,7 @@ $(window).load(function(){
 function deleteCookie(name) {
   setCookie(name, "", {
     expires: -1
-  })
+  });
 }
 function setCookie(name, value, options) {
   options = options || {};

@@ -75,6 +75,7 @@
             </div>
                             
         <div class="row">
+            <h3>План сада</h3>
                 <div class="col-md-6">                    
      
            <div class="sectors">
@@ -93,7 +94,7 @@
                 <img src="tree0.png" height='250' width="190" class='hint'/></div>
             <div class="col-md-4">
           <div>описание сектора</div> 
-                <textarea id="sectorDescription" name="sectorDescription" >${info}</textarea>                  
+                <textarea id="sectorDescription" name="sectorDescription" readonly>${info}</textarea>                  
                             
             </div>                
 

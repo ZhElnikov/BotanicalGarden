@@ -102,10 +102,10 @@
                     <div>Должность</div>
                     <input class="profile" type="text" id="position" name="position" value="${myprofile.getSpecialization()}" readonly> 
                     <div>Характеристика</div>
-                    <textarea id="characterstic" name="characterstic" readonly>${myprofile.getAbout()} </textarea>  </div>  
+                    <textarea id="characterstic" name="characterstic"> ${myprofile.getAbout()} </textarea>  </div>  
                 <div class="col-md-3">
                     <span>Задания</span>
-                    <textarea id="tasks" name="tasks" >${jobs}</textarea>
+                    <textarea id="tasks" name="tasks" readonly>${jobs}</textarea>
                 </div>
 
             </div>   
@@ -119,31 +119,33 @@
                         <span>Логин</span>
                         <span class="errorMsg" id="symbol-login">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-login">Длина 1-45 символов!</span>
-                        <input class="createProfile login" type="text" id="login" th:value="${user.login}" name="login" value="" >    
+                        <input class="createProfile login createlogin" type="text" id="login" th:value="${user.login}" name="login" value="" >    
                         <span>Пароль</span>
                         <span class="errorMsg" id="symbol-password">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-password">Длина 1-45 символов!!</span>
-                        <input class="createProfile" type="text" id="password" th:value="${user.password}" name="password" value="" >    
+                        <input class="createProfile createpassword" type="text" id="password" th:value="${user.password}" name="password" value="" >    
 
                         <span>e-mail</span>
                         <span class="errorMsg" id="symbol-mail">Некорректно указан адрес!</span>
                         <span class="errorMsg" id="length-mail">Длина 1-45 символов!!</span>
-                        <input class="createProfile" type="text" id="EMail" th:value="${user.EMail}" name="EMail" value="" >    
+                        <input class="createProfile createmail" type="text" id="EMail" th:value="${user.EMail}" name="EMail" value="" >    
 
                         <span>Должность</span>
                         <span class="errorMsg" id="symbol-position">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-position">Длина 1-45 символов!!</span>
-                        <input class="createProfile" type="text" id="specialization" th:value="${profile.specialization}" name="specialization" value="" >    
+                        <input class="createProfile createposition" type="text" id="specialization" th:value="${profile.specialization}" name="specialization" value="" >    
                     </div>
                     <div class="col-md-3 ">
                         <span>Имя</span>
                         <span class="errorMsg" id="symbol-name">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-name">Длина 1-45 символов!</span>
-                        <input class="createProfile" type="text" id="name" th:value="${profile.name}" name="name" value="" >    
+                        <div>
+                        <input class="createProfile createname" type="text" id="name" th:value="${profile.name}" name="name" value="" >    
+                        </div>
                         <span>Фамилия</span>
                         <span class="errorMsg" id="symbol-surname">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-surname">Длина 1-45 символов!!</span>
-                        <input class="createProfile" type="text" id="surname" th:value="${profile.surname}" name="surname" value="" >    
+                        <input class="createProfile createsurname" type="text" id="surname" th:value="${profile.surname}" name="surname" value="" >    
                         <span>Роль</span>
                         <select th:value="${user.role}" id="role" name="role" class="createProfile">
                             <option>1</option>
@@ -155,10 +157,10 @@
                         <span>Характеристика</span>
                         <span class="errorMsg" id="symbol-about">Недопустимые символы!</span>
                         <span class="errorMsg" id="length-about">Длина от 1 до 255 символов!</span>
-                        <textarea id="about" name="about" class="createArea"></textarea>
+                        <textarea id="about" name="about" class="createArea createabout"></textarea>
                     </div> 
                 </div>    
-                <input class="createProfileBtn" id ="createProfileBtn" type="submit" value="Создать"> 
+                <input class="createProfileBtn bigButton" id ="createProfileBtn" type="submit" value="Создать"> 
             </form>
               
             
@@ -173,7 +175,7 @@
                         User tempU = userlist.get(i);
                         if (!tempU.getLogin().equals(userlogin)){
                 %>                
-                <div class="col-md-4"> 
+                <div class="col-md-3"> 
                     <form method="post" th:action="@{/index/delete.htm}" action="index/delete.htm" th:object="${user}" name="profileForm">
                         <div class="panel panel-default">                          
                          <div class="panel-body" id="">

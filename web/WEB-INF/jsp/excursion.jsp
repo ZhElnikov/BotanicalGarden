@@ -13,6 +13,7 @@
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>        
         <script> <%@include file="/WEB-INF/js/main.js"%></script>
+        <script> <%@include file="/WEB-INF/js/excursionValidation.js"%></script>
     </head>
 
     <body>
@@ -77,34 +78,54 @@
                     </div>
                 </nav>
             </div>
+                            <h3>Создание экскурсии</h3>
             <form method="post" th:action="@{/excursion.htm}" th:object="${tour}" action="excursion.htm" name="exAddForm">
                 <div class="row">         
                     <div class="col-md-7 col-md-offset-4">
                         <div class="row">         
                             <div class="col-md-4">
-                                <div>Начало</div> 
+                                <span>Начало</span> 
+                                <span class="errorMsg" id="start-empty">Не выбрана!</span>
                                 <input type="date" th:value="${tour.startDate}" id="startDate" name="startDate" class="planinput"> 
                             </div>
-                            <div class="col-md-4">
-                                <div>Окончание</div> 
+                            <div class="col-md-5">
+                                <span>Окончание</span> 
+                                <span class="errorMsg" id="end-empty">Не выбрана!</span>
+                                <span class="errorMsg" id="end-today">Не раньше сегодня!</span>
+                                <span class="errorMsg" id="wrong-interval">Не раньше начала!</span>
                                 <input type="date" th:value="${tour.endDate}" id="endDate" name="endDate" class="planinput"> 
                             </div>
                         </div>
-                        <div>Описание экскурсии</div> 
-                        <textarea id="body" name="body" ></textarea>
+                        <span>Описание экскурсии</span> 
+                        <span class="errorMsg" id="length-area">Длина от 1 до 255 символов!</span>
+                        <span class="errorMsg" id="symbol-area">Недопустимые символы!</span>
+                        <div>
+                        <textarea id="body" name="body" class="bigArea"></textarea>
+                        </div>
                         <div class="row">         
                             <div class="col-md-5">
-                                <div>Цена</div> 
-                                <input type="text" th:value="${tour.price}" id="price" name="price" class="planinput"> 
+                                <span>Цена</span> 
+                                <span class="errorMsg" id="length-price">Длина от 1 до 255 символов!</span>
+                                <span class="errorMsg" id="symbol-price">Цена-положительное число!</span>
+                                <div>
+                                <input type="text" th:value="${tour.price}" id="price" name="price" class="planinput price-check"> 
                                 <span>BYN</SPAN>
+                                </div>
+                              
                             </div>
+                                <div class="col-md-1">
+                                  <input class="createBtn bigButton btn" id = "createBtn" type="submit" value="Создать">    
+                                </div>
+                        
+                        
+                        
                         </div>
-                        <input class="createBtn" id = "createBtn" type="submit" value="Создать"> 
+                       
                     </div>
                 </div>
             </form>  
 
-
+<h3>Все экскурсии</h3>
             <div class="row"> 
                 <%
                     List<Tour> tours = (List<Tour>) request.getAttribute("tours");
@@ -118,10 +139,17 @@
                         <div class="panel-body">
                             <input type="hidden" th:value="${tour.idTour}" id="idTour" name="idTour" value="<%=tour.getIdTour()%>"  >
                             <div>
-                                <textarea id="body" name="body" ><%=body%></textarea>   
+                                <textarea class="excArea" id="body" name="body" readonly><%=body%></textarea>   
                             </div>
+                            <div class="row">
+                                <div class="col-md-7"> 
+                            <span>Цена</span>
                             <input type="text" th:value="${tour.price}" id="price" name="price" value="<%=tour.getPrice()%>" readonly>
-                            <input class="declineBtn" id = "deleteBtn" type="submit" value="Удалить">
+                            </div>
+                            <div class="col-md-2"> 
+                            <input class="declineBtn btnLeft" id = "deleteBtn" type="submit" value="Удалить">
+                            </div>
+                            </div>
                         </div>
                     </div>   
                     </form>

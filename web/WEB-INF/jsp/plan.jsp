@@ -79,6 +79,7 @@
             </div>
 
             <%if (role.equals("2")) {%>
+            <h3>Создание задачи</h3>
             <form method="post" action="" th:action="@{/plan}" th:object="${job}"  th:object="${profile}" name="planForm">
                 <div class="row">         
                     <div class="col-md-7 col-md-offset-4">
@@ -100,7 +101,7 @@
                         <span class="errorMsg" id="length-area">Длина от 1 до 255 символов!</span>
                         <span class="errorMsg" id="symbol-area">Недопустимые символы!</span>
                         <div>
-                        <textarea id="body" name="body"></textarea>
+                        <textarea id="body" name="body" class="bigArea"></textarea>
                         </div>
                         <div class="row">         
                             
@@ -126,7 +127,7 @@
                
             </form>  
 
-
+<h3>Имеющиеся задачи</h3>
             <div class="row"> 
                 <%
                     List<String> allJobs = (List<String>) request.getAttribute("alljobs");
@@ -157,6 +158,7 @@
             <%}
                 if (role.equals("1")) {
             %>
+            <h3>Запланированные мероприятия</h3>
             <div class="row"> 
                 <%
                     List<Job> userJobs = (List<Job>) request.getAttribute("userjobs");

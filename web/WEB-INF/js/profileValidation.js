@@ -99,14 +99,15 @@ $(document).ready(function(){
     var filterPassword = /^[a-zA-Z0-9!%&#$\^*?_~+]+$/;
     var filterMail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     var filter = /[a-zA-Z0-9!%@&#$\^*?_~+]/;
+    var filterAbout = /[a-zA-Z%@&#$\^?_~]/;
     
-    var login = $("#createlogin").val();
-    var password = $("#createpassword").val();
-    var mail = $("#createmail").val();
-    var position = $("#createposition").val();
-    var name = $("#createname").val();
-    var surname = $("#createsurname").val();
-    var about = $("#createabout").val();
+    var login = $(".createlogin").val();
+    var password = $(".createpassword").val();
+    var mail = $(".createmail").val();
+    var position = $(".createposition").val();
+    var name = $(".createname").val();
+    var surname = $(".createsurname").val();
+    var about = $(".createabout").val();
     
     var loginValid;
     var passwordValid;
@@ -179,7 +180,7 @@ $(document).ready(function(){
     if (about === '' || about.length>255){
             aboutValid=false;
             setCookie("length-about", "1");
-        }  else if (filter.test(about)){
+        }  else if (filterAbout.test(about)){
            aboutValid=false;
            setCookie("symbol-about", "1");
         } else  {

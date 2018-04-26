@@ -15,6 +15,7 @@
         <style><%@include file="/WEB-INF/css/styles.css"%></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>        
         <script> <%@include file="/WEB-INF/js/main.js"%></script>
+        <script> <%@include file="/WEB-INF/js/orderValidation.js"%></script>
     </head>
 
     <body>
@@ -88,29 +89,51 @@
                     }
                     String user = cookies[number].getValue();
                     
-            %>   
+            %>  
+            <h3>Оформление заявки</h3>
             <div class="row">         
                 <div class="col-md-4 col-md-offset-4 ">
-                    <FORM method="post" th:action="@{/order/add.htm}" th:object="${attrs}" action="order/add.htm"name="orderAddForm">
+                    <FORM method="post" th:action="@{/order/add.htm}" th:object="${attrs}" action="order/add.htm"name="orderAddForm" id="orderAddForm">
                         <input type="hidden" th:value="${attr.user}" name="user" id="user" value="<%=user%>">
                         <div class="radiobtn">
                             <div class="row">         
                                 <div class="col-md-6 ">
-                            <input type="radio" th:value="${attr.type}" name="type" id="type" value="fertilizer"> Удобрение 
+                            <input type="radio" th:value="${attr.type}" name="type" id="type" value="fertilizer" checked> Удобрение 
                             </div>
                                  <div class="col-md-5" >
-                            <input type="radio" th:value="${attr.type}" name="type" id="type" value="tree" checked> Саженец
+                            <input type="radio" th:value="${attr.type}" name="type" id="type" value="tree" > Саженец
                              </div>
                                 </div>
                         </div>
-                        <div>Наименование</div> 
-                        <input type="text" th:value="${attr.name}" id="name" name="name">
-                        <div>Количество</div> 
+                        <span>Наименование</span>
+                        <span class="errorMsg" id="length-name">Длина от 1 до 255 символов!</span>
+                        <span class="errorMsg" id="symbol-name">Недопустимые символы!</span>
+                        <div>
+                        <input type="text" th:value="${attr.name}" id="name" name="name" class="inputName">
+                        </div>
+                        <select th:value="${attr.name}" id="name" name="name" class="dropName">
+                            <option>Ель</option>
+                            <option>Дуб</option>
+                            <option>Клен</option>
+                            <option>Олива</option>
+                            <option>Миндаль</option>
+                            <option>Каштан</option>
+                            <option>Ива</option>
+                        </select> 
+                        <span>Количество</span> 
+                        <span class="errorMsg" id="length-amount">Длина от 1 до 255 символов!</span>
+                        <span class="errorMsg" id="symbol-amount">кол-во-положительное число!</span>
+                        <div>
                         <input type="text" th:value="${attr.q}" id="q" name="q">
-                        <div>Обоснование заявки</div> 
-                        <textarea id="body" name="body" ></textarea>
+                        </div>
+                        <span>Обоснование заявки</span>
+                        <span class="errorMsg" id="length-area">Длина от 1 до 255 символов!</span>
+                        <span class="errorMsg" id="symbol-area">Недопустимые символы!</span>
+                        <div>
+                        <textarea id="body" name="body" class="bigArea"></textarea>
+                        </div>
                         <div class="centerPos">
-                            <input class="bigButton" id = "orderBtn" type="submit" value="Подать заявку"></div>             
+                        <input class="bigButton" id = "orderBtn" type="submit" value="Подать заявку"></div>             
                     </FORM>
                 </div></div>
             <div class="row">      
@@ -128,7 +151,8 @@
                         String amountid = "amountid" + String.valueOf(i);
                         String approvebtn = "approvebtn" + String.valueOf(i);
                         String declinebtn = "declinebtn" + String.valueOf(i);
-                %>       
+                %>  
+                <h3>Все заявки</h3>
                 <div class="col-md-4">     
                     <form method="post" th:action="@{/order/response.htm}" th:object="${attrs}" action="order/response.htm" name="orderForm">
                         <div class="panel panel-default">
