@@ -32,6 +32,9 @@ public class MyIndexController {
     
     @RequestMapping(value = "/index.htm", method = RequestMethod.GET)
     public String showIndex(HttpServletRequest request, ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        if (userRole.equals("-1")){
+            return "redirect:/loginPage.htm";
+        }
         Profile myprofile = ProfileService.getLoginProfile(userLogin);
         String jobs = JobService.getJobsString(userLogin);
         List<Profile> proflist = ProfileService.getAllProfiles();
@@ -57,7 +60,10 @@ public class MyIndexController {
     }
     
     @RequestMapping(value = "/index/add.htm", method = RequestMethod.POST)
-    public String onAdd(@ModelAttribute("user") User user, @ModelAttribute("profile") Profile profile) { 
+    public String onAdd(@ModelAttribute("user") User user, @ModelAttribute("profile") Profile profile, @CookieValue(value = "valid", defaultValue = "false") String valid) { 
+        if (valid.equals("false")){
+            return "redirect:/index.htm";
+        }
         AuthService.addUserWithProfile(user, profile);
         return "redirect:/index.htm";
     }

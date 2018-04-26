@@ -79,7 +79,7 @@
                 </nav>
             </div>
                             <h3>Создание экскурсии</h3>
-            <form method="post" th:action="@{/excursion.htm}" th:object="${tour}" action="excursion.htm" name="exAddForm">
+            <form method="post" th:action="@{/excursion/add.htm}" th:object="${tour}" action="excursion/add.htm" name="exAddForm">
                 <div class="row">         
                     <div class="col-md-7 col-md-offset-4">
                         <div class="row">         
@@ -105,7 +105,7 @@
                         <div class="row">         
                             <div class="col-md-5">
                                 <span>Цена</span> 
-                                <span class="errorMsg" id="length-price">Длина от 1 до 255 символов!</span>
+                                <span class="errorMsg" id="length-price">Длина больше 0!</span>
                                 <span class="errorMsg" id="symbol-price">Цена-положительное число!</span>
                                 <div>
                                 <input type="text" th:value="${tour.price}" id="price" name="price" class="planinput price-check"> 

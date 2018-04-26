@@ -31,6 +31,9 @@ public class PlanController {
     
     @RequestMapping(value = "/plan.htm", method = RequestMethod.GET)
     public String showPlan(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        if (userRole.equals("-1")){
+            return "redirect:/loginPage.htm";
+        }
         List<Job> userJobs = JobService.getUserJobsList(userLogin);
         List<String> allJobs = JobService.getAllJobsListString();
         List<Job> jobs = JobService.getAllJobsList();
@@ -50,7 +53,10 @@ public class PlanController {
     }
     
     @RequestMapping(value = "/plan.htm", method = RequestMethod.POST)
-    public String onSubmit(@ModelAttribute("job") Job job, @ModelAttribute("profile") Profile profile) {
+    public String onSubmit(@ModelAttribute("job") Job job, @ModelAttribute("profile") Profile profile, @CookieValue(value = "valid", defaultValue = "false") String valid) {
+        if (valid.equals("false")){
+            return "redirect:/plan.htm";
+        }
         String s = profile.getName();
         String splited[] = s.split("\\.");
         JobService.addJob(job, Integer.parseInt(splited[0]));

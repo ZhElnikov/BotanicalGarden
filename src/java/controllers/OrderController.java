@@ -29,6 +29,9 @@ public class OrderController {
     
     @RequestMapping(value = "/order.htm", method = RequestMethod.GET)
     public String showOrder(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        if (userRole.equals("-1")){
+            return "redirect:/loginPage.htm";
+        }
         List<RequestFert> fertList = OrderService.getFerts();
         List<RequestTree> treeList = OrderService.getTrees();
         List<String> treeNames = OrderService.getTreesNames();
@@ -60,7 +63,10 @@ public class OrderController {
     }
     
     @RequestMapping(value = "/order/add.htm", method = RequestMethod.POST)
-    public String onAdd(@ModelAttribute("attrs") Attributes attrs, HttpServletResponse response) {
+    public String onAdd(@ModelAttribute("attrs") Attributes attrs, HttpServletResponse response, @CookieValue(value = "valid", defaultValue = "false") String valid) {
+        if (valid.equals("false")){
+            return "redirect:/order.htm";
+        }
         String body = attrs.getBody();
         String name = attrs.getName();
         String user = attrs.getUser();

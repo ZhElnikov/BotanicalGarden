@@ -43,10 +43,14 @@ public class ExcursionController {
         return "excursion";
     }
     
-    @RequestMapping(value = "/excursion.htm", method = RequestMethod.POST)
-    public String onSubmit(@ModelAttribute("tour") Tour tour) {
-        ExcursionService.addTour(tour);
-        return "redirect:excursion.htm";
+    @RequestMapping(value = "/excursion/add.htm", method = RequestMethod.POST)
+    public String onSubmit(@ModelAttribute("tour") Tour tour, @CookieValue(value = "valid", defaultValue = "false") String valid) {
+        System.out.println("!");
+        if (valid.equals("false")){
+            return "redirect:/excursion.htm";
+        }
+        //ExcursionService.addTour(tour);
+        return "redirect:/excursion.htm";
     }
     
     @RequestMapping(value = "/excursion/delete.htm", method = RequestMethod.POST)

@@ -40,6 +40,8 @@
                 <prop key="garden/7.htm">gardenController</prop>
                 <prop key="report.htm">gardenController</prop>
                 <prop key="excursion.htm">excursionController</prop>
+                <prop key="excursion/add.htm">excursionController</prop>
+                <prop key="excursion/delete.htm">excursionController</prop>
                 
             </props>
         </property>
