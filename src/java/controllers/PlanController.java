@@ -54,7 +54,7 @@ public class PlanController {
         String s = profile.getName();
         String splited[] = s.split("\\.");
         JobService.addJob(job, Integer.parseInt(splited[0]));
-        return "redirect:plan.htm";
+        return "redirect:/plan.htm";
     }
     
     @RequestMapping(value = "/plan/delete.htm", method = RequestMethod.POST)
