@@ -16,8 +16,17 @@ public class Attributes implements java.io.Serializable {
     String status;
     String body;
     String name;
+    String nameTree;
     String q;
     String user;
+
+    public String getNameTree() {
+        return nameTree;
+    }
+
+    public void setNameTree(String nameTree) {
+        this.nameTree = nameTree;
+    }
 
     public String getUser() {
         return user;
