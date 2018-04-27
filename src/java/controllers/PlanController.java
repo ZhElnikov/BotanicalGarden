@@ -42,7 +42,7 @@ public class PlanController {
         List<Job> userJobs = JobService.getUserJobsList(userLogin);
         List<String> allJobs = JobService.getAllJobsListString();
         List<Job> jobs = JobService.getAllJobsList();
-        if (filter){
+        if (this.filter){
             System.out.println("true");
             for (int i = 0; i < jobs.size(); i++) {
                 Job temp = (Job) jobs.get(i);
