@@ -111,7 +111,7 @@
                         <div>
                         <input type="text" th:value="${attr.name}" id="name" name="name" class="inputName">
                         </div>
-                        <select th:value="${attr.name}" id="name" name="name" class="dropName">
+                        <select th:value="${attr.nameTree}" id="nameTree" name="nameTree" class="dropName">
                             <option>Ель</option>
                             <option>Дуб</option>
                             <option>Клен</option>
@@ -136,11 +136,24 @@
                         <input class="bigButton" id = "orderBtn" type="submit" value="Подать заявку"></div>             
                     </FORM>
                 </div></div>
-            <div class="row">      
+            <div class="row">     
+                
+                
                 <%}
-
+                    
+                    
                     //List<RequestFert> fertList = (List<RequestFert>) request.getAttribute("fertList");
-                    if (role.equals("2")) {
+                    if (role.equals("2")) {%>
+                    <h3>Все заявки</h3>
+<form method="post" action="order/filter.htm" th:action="@{/order/filter}" th:object="${attrs}" name="orderForm">
+    <select th:value="${attrs.body}" id="body" name="body">
+        <option>без фильтра</option>
+        <option>только деревья</option>
+        <option>только удобрения</option>
+    </select>
+    <input class="smallButton" type="submit" value="Обновить">   
+</form>  
+                    <%
                         List<RequestTree> treeList = (List<RequestTree>) request.getAttribute("treeList");
                         List<String> treeNames = (List<String>) request.getAttribute("treeNames");
                         for (int i = 0; i < treeList.size(); i++) {
@@ -152,7 +165,6 @@
                         String approvebtn = "approvebtn" + String.valueOf(i);
                         String declinebtn = "declinebtn" + String.valueOf(i);
                 %>  
-                <h3>Все заявки</h3>
                 <div class="col-md-4">     
                     <form method="post" th:action="@{/order/response.htm}" th:object="${attrs}" action="order/response.htm" name="orderForm">
                         <div class="panel panel-default">

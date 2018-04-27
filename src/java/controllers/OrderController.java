@@ -27,6 +27,8 @@ import services.OrderService;
 @SessionAttributes({"attrs"})
 public class OrderController {
     
+    private int filter = 0;
+    
     @RequestMapping(value = "/order.htm", method = RequestMethod.GET)
     public String showOrder(ModelMap model, @CookieValue(value = "user", defaultValue = "none") String userLogin, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
         if (userRole.equals("-1")){
@@ -34,6 +36,13 @@ public class OrderController {
         }
         List<RequestFert> fertList = OrderService.getFerts();
         List<RequestTree> treeList = OrderService.getTrees();
+        if (this.filter == 1){
+            fertList.clear();
+        }
+        if (this.filter == 2){
+            treeList.clear();
+        }
+        this.filter = 0;
         List<String> treeNames = OrderService.getTreesNames();
         Attributes attrs = new Attributes();
         model.addAttribute("treeList", treeList);
@@ -65,14 +74,18 @@ public class OrderController {
     @RequestMapping(value = "/order/add.htm", method = RequestMethod.POST)
     public String onAdd(@ModelAttribute("attrs") Attributes attrs, HttpServletResponse response, @CookieValue(value = "valid", defaultValue = "false") String valid) {
         if (valid.equals("false")){
+            System.out.println("NOT VALID");
             return "redirect:/order.htm";
         }
+        
         String body = attrs.getBody();
         String name = attrs.getName();
+        String nameTree = attrs.getNameTree();
+        System.out.println(nameTree);
         String user = attrs.getUser();
         int q = Integer.parseInt(attrs.getQ());
         if (attrs.getType().equals("tree")){
-            OrderService.addTreeReq(user, name, body, q);
+            OrderService.addTreeReq(user, nameTree, body, q);
         }
         if (attrs.getType().equals("fertilizer")){
             OrderService.addFertReq(user, name, body, q);
@@ -80,5 +93,21 @@ public class OrderController {
         return "redirect:/order.htm";
     }
 
+    @RequestMapping(value = "/order/filter.htm", method = RequestMethod.POST)
+    public String onFilter(HttpServletResponse response, @ModelAttribute("attrs") Attributes attrs, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
+        if (userRole.equals("-1") || userRole.equals("1")){
+            return "redirect:/loginPage.htm";
+        }
+        if (attrs.getBody().equals("без фильтра")){
+            this.filter = 0;
+            return "redirect:/order.htm";
+        } if (attrs.getBody().equals("только деревья")){
+            this.filter = 1;
+            return "redirect:/order.htm";
+        } else {
+            this.filter = 2;
+            return "redirect:/order.htm";
+        }
+    }
     
 }

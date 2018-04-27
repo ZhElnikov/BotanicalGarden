@@ -102,7 +102,7 @@
                     <div>Должность</div>
                     <input class="profile" type="text" id="position" name="position" value="${myprofile.getSpecialization()}" readonly> 
                     <div>Характеристика</div>
-                    <textarea id="characterstic" name="characterstic"> ${myprofile.getAbout()} </textarea>  </div>  
+                    <textarea id="characterstic" name="characterstic" readonly> ${myprofile.getAbout()} </textarea>  </div>  
                 <div class="col-md-3">
                     <span>Задания</span>
                     <textarea id="tasks" name="tasks" readonly>${jobs}</textarea>
