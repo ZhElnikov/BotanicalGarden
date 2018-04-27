@@ -93,7 +93,7 @@ public class PlanController {
     
     @RequestMapping(value = "/plan/complete.htm", method = RequestMethod.POST)
     public String onComplete(@ModelAttribute("job") Job job, @CookieValue(value = "role", defaultValue = "-1") String userRole) {
-        if (userRole.equals("-1") || userRole.equals("1")){
+        if (userRole.equals("-1")){
             return "redirect:/loginPage.htm";
         }
         JobService.completeJob(job);
