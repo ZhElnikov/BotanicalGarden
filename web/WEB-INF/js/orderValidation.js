@@ -87,8 +87,10 @@ $(document).ready(function () {
         }
 
         var value = $('input[name=type]:checked', '#orderAddForm').val();
+         console.log(value);
         if (value !== "tree") {
-            var name = $("#name").val();
+            var name = $(".inputName").val();
+            console.log(name);
             if (name == '' || name.length > 45) {
                 nameValid = false;
                 setCookie("length-name", "1");
@@ -98,6 +100,8 @@ $(document).ready(function () {
             } else {
                 nameValid = true;
             }
+        } else {;
+            nameValid = true;
         }
         if (nameValid && amountValid && bodyValid)
             setCookie("valid", "true");
