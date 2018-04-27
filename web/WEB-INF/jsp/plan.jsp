@@ -129,11 +129,11 @@
               <h3>Имеющиеся задачи</h3>
               
 <form method="post" action="plan/filter.htm" th:action="@{/plan/filter}" th:object="${attrs}" name="filterForm">
-    <select th:value="${attrs.body}" id="body" name="body">
+    <select th:value="${attrs.body}" id="body" name="body" class="filterDrop">
         <option>без фильтра</option>
         <option>только невыполненные</option>
     </select>
-    <input class="smallButton" type="submit" value="Обновить">   
+    <input class="filter" type="submit" value="Обновить">   
 </form>  
 
             <div class="row"> 

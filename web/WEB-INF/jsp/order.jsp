@@ -136,7 +136,7 @@
                         <input class="bigButton" id = "orderBtn" type="submit" value="Подать заявку"></div>             
                     </FORM>
                 </div></div>
-            <div class="row">     
+               
                 
                 
                 <%}
@@ -146,13 +146,13 @@
                     if (role.equals("2")) {%>
                     <h3>Все заявки</h3>
 <form method="post" action="order/filter.htm" th:action="@{/order/filter}" th:object="${attrs}" name="orderForm">
-    <select th:value="${attrs.body}" id="body" name="body">
+    <select th:value="${attrs.body}" id="body" name="body" class="filterDrop">
         <option>без фильтра</option>
         <option>только деревья</option>
         <option>только удобрения</option>
     </select>
-    <input class="smallButton" type="submit" value="Обновить">   
-</form>  
+    <input class="filter" type="submit" value="Обновить">   
+</form>   <div class="row"> 
                     <%
                         List<RequestTree> treeList = (List<RequestTree>) request.getAttribute("treeList");
                         List<String> treeNames = (List<String>) request.getAttribute("treeNames");

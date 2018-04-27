@@ -446,3 +446,14 @@ visibility: visible;
     width:425px;
      height:200px;
 }
+.filter{
+ border-radius: 5px;
+ height:30px;
+     background-color: cornflowerblue;
+     
+}
+
+.filterDrop{
+   height:30px;
+   width:270px;
+}
