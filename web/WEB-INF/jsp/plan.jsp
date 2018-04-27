@@ -126,14 +126,28 @@
                 
                
             </form>  
+              <h3>Имеющиеся задачи</h3>
+              
+<form method="post" action="plan/filter.htm" th:action="@{/plan/filter}" th:object="${attrs}" name="filterForm">
+    <select th:value="${attrs.body}" id="body" name="body">
+        <option>без фильтра</option>
+        <option>только невыполненные</option>
+    </select>
+    <input class="smallButton" type="submit" value="Обновить">   
+</form>  
 
-<h3>Имеющиеся задачи</h3>
             <div class="row"> 
                 <%
                     List<String> allJobs = (List<String>) request.getAttribute("alljobs");
                     List<Job> jobs = (List<Job>) request.getAttribute("jobs");
                     for (int i = 0; i < allJobs.size() && i < jobs.size(); i++) {
                         Job job = jobs.get(i);
+                        String status;
+                         if (job.getEndDate() == null) status = "не выполнена";
+                         else status = "выполнена";
+                            
+                      
+                        String resultBody = allJobs.get(i) + "\r\nСтатус выполнения - " + status;
                         String textareaid = "textareaid" + String.valueOf(i);
                         String panelid = "panelid" + String.valueOf(i);
                         String buttonid = "buttonid" + String.valueOf(i);
@@ -145,7 +159,7 @@
                             <input type="hidden" th:value="${job.idJob}" id="idJob" name="idJob" value="<%=job.getIdJob()%>"  > 
                             <div class="panel-body" id="<%=panelid%>">
                                 <div>
-                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%>  readonly><%=allJobs.get(i)%></textarea>   
+                                    <textarea class="smallOrder2" name="order" id=<%=textareaid%>  readonly><%=resultBody%></textarea>   
                                 </div>
                                 <input class="deleteBtn" type="submit" value="Удалить" id = <%=buttonid%> >
                             </div>
