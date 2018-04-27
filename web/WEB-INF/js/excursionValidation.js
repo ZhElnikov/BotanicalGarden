@@ -12,9 +12,11 @@ $(document).ready(function(){
     
     if (cookie.indexOf("length-price")!==-1){
         $("#length-price").css("display","inline-block");
+        //$(".price-check").val("0");
       deleteCookie("length-price");
     } else if(cookie.indexOf("symbol-price")!==-1){
        $("#symbol-price").css("display","inline-block");
+      
        deleteCookie("symbol-price");
     }else{
        $("#length-price").css("display","none");
@@ -71,9 +73,11 @@ $(document).ready(function(){
     
     if (price==='' || price.length>45){
         priceValid=false;
+         $(".price-check").val("0");
         setCookie("length-price", "1");
     } else if (!isNumber(price)){
         priceValid=false;
+         $(".price-check").val("0");
         setCookie("symbol-price", "1");
     } else{
         priceValid=true;
@@ -113,9 +117,9 @@ $(document).ready(function(){
         }      
        
     if( areaValid && endValid && startValid&& priceValid)
-        setCookie("valid", "1");
+        setCookie("valid", "true");
         else 
-        setCookie("valid", "0");
+        setCookie("valid", "false");
     console.log(document.cookie);
         
     });
